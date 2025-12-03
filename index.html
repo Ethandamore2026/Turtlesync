@@ -1,75 +1,332 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TurtleSync – Sea Turtle Reporting</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #e6f7ff;
-        }
-        header {
-            background: #0077be;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .section {
-            padding: 30px;
-            max-width: 900px;
-            margin: auto;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #0099cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 18px;
-        }
-        footer {
-            background: #005f8f;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>TurtleSync | Sea Turtle Reporting Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: #f4f7fa;
+      color: #123248;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a879c, #1273c4);
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn-primary {
+      background-color: #ffffff;
+      color: #0a879c;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    }
+
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    main section {
+      padding: 32px 0;
+    }
+
+    section:nth-of-type(odd) {
+      background-color: #ffffff;
+    }
+
+    section:nth-of-type(even) {
+      background-color: #e7f2f7;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #0c4f6b;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: #0a879c;
+    }
+
+    footer {
+      background-color: #0c2840;
+      color: #d7e4f2;
+      padding: 18px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #8fd7ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>TurtleSync</h1>
-    <p>Helping protect injured and nesting sea turtles through community reporting</p>
-</header>
+  <header>
+    <div class="container hero">
+      <div>
+        <div class="hero-title">TurtleSync</div>
+        <div class="hero-subtitle">
+          Helping injured and nesting sea turtles get help faster through simple,
+          organized reporting and public education.
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <!-- Replace the # link below with your actual Google Form link -->
+        <a href="#" class="btn btn-primary" target="_blank" rel="noopener">
+          Report a Turtle
+        </a>
+        <a href="#about" class="btn btn-secondary">
+          Learn more about the project
+        </a>
+      </div>
+    </div>
+  </header>
 
-<div class="section">
-    <h2>About TurtleSync</h2>
-    <p>
-        TurtleSync is a simple reporting tool designed to help beachgoers and volunteers quickly report
-        injured or nesting sea turtles. The project aims to support conservation teams by improving 
-        communication and response time.
-    </p>
-</div>
+  <main>
+    <section id="what">
+      <div class="container">
+        <h2>What TurtleSync Does</h2>
+        <p>
+          TurtleSync is a student led project designed to support sea turtle protection
+          by making it easier to report injured turtles, disturbed nests, or hatchlings in danger.
+          The project focuses on turning concern into clear information that conservation teams can use.
+        </p>
+        <ul>
+          <li>Collects basic details about injured or nesting sea turtles.</li>
+          <li>Organizes location and conditions in a clear and consistent format.</li>
+          <li>Helps rescue and conservation teams respond more quickly and effectively.</li>
+          <li>Raises awareness about safe and legal ways to help protected species.</li>
+        </ul>
+      </div>
+    </section>
 
-<div class="section">
-    <h2>Submit a Turtle Report</h2>
-    <p>Click below to submit a sighting of an injured turtle, nesting turtle, or marked nest.</p>
-    <a class="btn" href="#">Report Coming Soon</a>
-</div>
+    <section id="how">
+      <div class="container two-column">
+        <div>
+          <h2>How Reporting Works</h2>
+          <p>
+            Reporting through TurtleSync is designed to be quick, clear, and safe
+            for both the person and the turtle.
+          </p>
+          <ol>
+            <li>
+              <span class="highlight">Observe safely.</span>
+              Keep your distance and do not touch, move, or crowd the animal.
+            </li>
+            <li>
+              <span class="highlight">Submit a report.</span>
+              Use the TurtleSync form to share what you see, where you are,
+              and any important details about the turtle condition or behavior.
+            </li>
+            <li>
+              <span class="highlight">Add photos if possible.</span>
+              Photos can help experts understand the situation without disturbing the turtle.
+            </li>
+            <li>
+              <span class="highlight">Contact local rescue groups.</span>
+              TurtleSync is designed to support communication with organizations that handle
+              sea turtle emergencies and nest monitoring.
+            </li>
+            <li>
+              <span class="highlight">Follow local guidelines.</span>
+              Sea turtles are protected by law. All actions should follow posted rules
+              and conservation best practices.
+            </li>
+          </ol>
+        </div>
+        <div>
+          <div class="card">
+            <h3 style="margin-bottom: 8px;">Planned Report Form Fields</h3>
+            <p>This is a sample of the information TurtleSync collects:</p>
+            <ul>
+              <li>Date and time of sighting.</li>
+              <li>Beach name or nearest access point.</li>
+              <li>Type of sighting: injured turtle, nesting turtle, hatchlings, or unsure.</li>
+              <li>Description of behavior or visible injuries.</li>
+              <li>Whether the turtle is in immediate danger.</li>
+              <li>Optional photos or video links.</li>
+            </ul>
+            <p style="font-size: 0.9rem;">
+              You can build this as a Google Form and link it to the button at the top of this page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="section">
-    <h2>Our Mission</h2>
-    <p>
-        We are committed to marine conservation and increasing public involvement in sea turtle protection.
-    </p>
-</div>
+    <section id="why">
+      <div class="container">
+        <h2>Why Sea Turtle Reporting Matters</h2>
+        <p>
+          Many people want to help when they see a sea turtle that might be hurt or in trouble,
+          but they are not always sure what to do. In some cases, people accidentally disturb nests
+          or get too close while trying to help.
+        </p>
+        <p>
+          Clear reporting gives conservation teams the information they need to respond safely,
+          without putting the turtles or the public at risk. TurtleSync was created to close that gap
+          by turning concern into organized, useful data that can support real rescue and protection work.
+        </p>
+      </div>
+    </section>
 
-<footer>
-    TurtleSync © 2025 – Created by Ethan D’Amore
-</footer>
+    <section id="about">
+      <div class="container two-column">
+        <div>
+          <h2>About TurtleSync</h2>
+          <p>
+            TurtleSync began as a student project focused on combining technology with marine conservation.
+            It is still growing and will continue to develop through feedback from volunteers,
+            conservation professionals, and future college research.
+          </p>
+          <p>
+            The goal is to keep improving the system so that it is easy for anyone on the beach
+            to report a concern and support sea turtle protection in a real and practical way.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 8px;">About the Founder</h3>
+          <p>
+            My name is Ethan D'Amore. I am a high school student with a strong interest in
+            animal care, marine conservation, and veterinary science. I have experience volunteering
+            with animal shelters, completing veterinary assistant training, and creating systems
+            that help people support animals in need.
+          </p>
+          <p>
+            I created TurtleSync to turn my passion for sea turtles and rescue work into a project
+            that can make a real difference for animals that cannot speak for themselves.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Get Involved or Share Feedback</h2>
+        <p>
+          If you work with a conservation group, marine rescue team, or volunteer organization
+          and would like to learn more about TurtleSync, I would be glad to share the project
+          and receive feedback.
+        </p>
+        <p>
+          You can reach me at:
+        </p>
+        <ul>
+          <li>Email: <a href="mailto:ethan.damore2026@gmail.com">ethan.damore2026@gmail.com</a></li>
+          <li>Interests: collaboration, testing, student research projects, and volunteer training resources.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      TurtleSync is a student led project in development and does not replace official wildlife
+      emergency hotlines or local regulations.
+    </div>
+  </footer>
 
 </body>
 </html>
