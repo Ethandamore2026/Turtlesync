@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +18,60 @@
       line-height: 1.6;
     }
 
-    header {
-      background: linear-gradient(135deg, #0a879c, #1273c4);
+    a {
+      text-decoration: none;
+    }
+
+    /* Nav */
+
+    .nav {
+      width: 100%;
+      background-color: rgba(12, 40, 64, 0.9);
       color: white;
-      padding: 40px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: #e6f4ff;
+      opacity: 0.9;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* Hero */
+
+    header {
+      background:
+        linear-gradient(135deg, rgba(10, 135, 156, 0.9), rgba(18, 115, 196, 0.9)),
+        url("https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg") center/cover no-repeat;
+      color: white;
+      padding: 60px 20px 50px 20px;
     }
 
     .container {
@@ -34,7 +83,7 @@
     .hero {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       align-items: flex-start;
     }
 
@@ -44,12 +93,20 @@
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
-      max-width: 600px;
+      font-size: 1.05rem;
+      max-width: 640px;
+    }
+
+    .hero-tag {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      opacity: 0.9;
     }
 
     .hero-buttons {
-      margin-top: 12px;
+      margin-top: 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -57,35 +114,37 @@
 
     .btn {
       padding: 10px 18px;
-      border-radius: 6px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
       font-size: 0.95rem;
       text-decoration: none;
       display: inline-block;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
     }
 
     .btn-primary {
       background-color: #ffffff;
       color: #0a879c;
       font-weight: 600;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
     }
 
     .btn-secondary {
-      background-color: rgba(255, 255, 255, 0.15);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #f2f9ff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
     }
 
+    /* Sections */
+
     main section {
-      padding: 32px 0;
+      padding: 36px 0;
     }
 
     section:nth-of-type(odd) {
@@ -98,7 +157,7 @@
 
     h2 {
       font-size: 1.6rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: #0c4f6b;
     }
 
@@ -106,14 +165,33 @@
       margin-bottom: 10px;
     }
 
-    ul {
-      margin-left: 20px;
-      margin-bottom: 10px;
+    /* Feature cards */
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 16px;
     }
 
-    li {
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-title {
+      font-weight: 600;
       margin-bottom: 6px;
     }
+
+    .card-emoji {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+
+    /* Two column */
 
     .two-column {
       display: grid;
@@ -122,17 +200,51 @@
       align-items: flex-start;
     }
 
-    .card {
-      background-color: #ffffff;
-      border-radius: 8px;
-      padding: 16px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    ul {
+      margin-left: 18px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
     }
 
     .highlight {
       font-weight: 600;
       color: #0a879c;
     }
+
+    /* Details sections */
+
+    details {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #0c4f6b;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::before {
+      content: "▸ ";
+      font-size: 0.9rem;
+      color: #0a879c;
+    }
+
+    details[open] summary::before {
+      content: "▾ ";
+    }
+
+    /* Footer */
 
     footer {
       background-color: #0c2840;
@@ -150,30 +262,71 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .two-column {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        padding: 40px 18px 30px 18px;
       }
 
       .hero-title {
         font-size: 2rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .nav-links {
+        gap: 10px;
+        flex-wrap: wrap;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">TURTLESYNC</div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#how">How it works</a>
+        <a href="#where">Coverage</a>
+        <a href="#more">More info</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="overview">
     <div class="container hero">
       <div>
+        <div class="hero-tag">Student led sea turtle project</div>
         <div class="hero-title">TurtleSync</div>
         <div class="hero-subtitle">
-          Helping injured and nesting sea turtles get help faster through simple,
-          organized reporting and public education.
+          A simple way for beachgoers and volunteers to report injured or nesting sea turtles,
+          so conservation teams can respond faster and more safely.
         </div>
       </div>
 
-      <!-- FIXED BUTTON WITH CORRECT LINK -->
       <div class="hero-buttons">
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform?usp=sf_link"
@@ -181,56 +334,179 @@
           target="_blank"
           rel="noopener"
         >
-          Report a Turtle
+          Report a turtle
         </a>
 
-        <a href="#about" class="btn btn-secondary">
-          Learn more about the project
+        <a href="#more" class="btn btn-secondary">
+          Learn more about TurtleSync
         </a>
       </div>
     </div>
   </header>
 
   <main>
-    <section id="what">
+    <!-- Quick overview cards -->
+    <section>
       <div class="container">
-        <h2>What TurtleSync Does</h2>
+        <h2>What TurtleSync does</h2>
         <p>
-          TurtleSync is a student led project designed to support sea turtle protection
-          by making it easier to report injured turtles, disturbed nests, or hatchlings in danger.
-          The project focuses on turning concern into clear information that conservation teams can use.
+          TurtleSync is a small but growing project that focuses on one clear goal:
+          turn concern on the beach into organized information that can help real turtles.
+        </p>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-emoji">🐢</div>
+            <div class="card-title">Report</div>
+            <p>
+              Collects basic details about injured or nesting sea turtles through a simple online form.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-emoji">📊</div>
+            <div class="card-title">Organize</div>
+            <p>
+              Stores sightings in a structured format so patterns, locations, and urgent cases are easier to understand.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-emoji">🌊</div>
+            <div class="card-title">Support</div>
+            <p>
+              Is designed to support the work of conservation teams, not replace official hotlines or local rules.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how">
+      <div class="container two-column">
+        <div>
+          <h2>How reporting works</h2>
+          <p>
+            TurtleSync is built to be simple. A report should feel quick and safe for the person and for the turtle.
+          </p>
+          <ul>
+            <li><span class="highlight">Observe from a distance.</span> Do not touch or crowd the animal.</li>
+            <li><span class="highlight">Open the report form.</span> Share the time, location, and what you see.</li>
+            <li><span class="highlight">Add photos if you can.</span> Images help responders understand the situation.</li>
+            <li><span class="highlight">Follow local instructions.</span> Always follow posted signs and rules on the beach.</li>
+          </ul>
+          <p>
+            Over time the form and process can be adapted with input from rescue groups and marine biologists.
+          </p>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3 style="margin-bottom: 6px;">Inside a TurtleSync report</h3>
+            <p style="margin-bottom: 6px;">Current fields include:</p>
+            <ul>
+              <li>Date and time of sighting</li>
+              <li>Beach name or access point</li>
+              <li>Type of sighting, such as injured turtle or hatchlings</li>
+              <li>Short description of behavior or injuries</li>
+              <li>Immediate danger status</li>
+              <li>Optional photo or video link</li>
+            </ul>
+            <p style="font-size: 0.9rem;">
+              These fields can be adjusted in the future if conservation partners request new data points.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage / US focus -->
+    <section id="where">
+      <div class="container">
+        <h2>Where TurtleSync is used</h2>
+        <p>
+          Right now TurtleSync is designed for beaches in the United States, especially areas where sea turtles are
+          commonly seen near the shoreline or nesting sites.
+        </p>
+        <p>
+          The long term goal is to build a simple model that could be adapted for other coastal regions around the
+          world with guidance from local experts and rescue organizations.
         </p>
         <ul>
-          <li>Collects basic details about injured or nesting sea turtles.</li>
-          <li>Organizes location and conditions in a clear and consistent format.</li>
-          <li>Helps rescue and conservation teams respond more quickly and effectively.</li>
-          <li>Raises awareness about safe and legal ways to help protected species.</li>
+          <li>Current focus: United States coastal areas</li>
+          <li>Future goal: share the idea with global conservation partners</li>
         </ul>
       </div>
     </section>
 
-    <section id="how">
-      <div class="container two-column">
-        <div>
-          <h2>How Reporting Works</h2>
-          <p>
-            Reporting through TurtleSync is designed to be quick, clear, and safe
-            for both the person and the turtle.
+    <!-- Expandable more info -->
+    <section id="more">
+      <div class="container">
+        <h2>More about the project</h2>
+        <p>
+          TurtleSync is still in development. The sections below share more detail about how it started and where it is going.
+        </p>
+
+        <details>
+          <summary>About TurtleSync</summary>
+          <p style="margin-top: 8px;">
+            TurtleSync began as a student project that combined a love for marine life with an interest in simple,
+            practical technology. Instead of building a complicated app, the first version focuses on getting the basics
+            right: a clear form, an easy to understand website, and a process that can grow with real feedback.
           </p>
-          <ol>
-            <li>
-              <span class="highlight">Observe safely.</span>
-              Keep your distance and do not touch, move, or crowd the animal.
-            </li>
-            <li>
-              <span class="highlight">Submit a report.</span>
-              Use the TurtleSync form to share what you see, where you are,
-              and any important details about the turtle condition or behavior.
-            </li>
-            <li>
-              <span class="highlight">Add photos if possible.</span>
-              Photos help responders understand the situation without disturbing the animal.
-            </li>
-            <li>
-              <span class="highlight">Contact local rescue groups.</span>
-              TurtleSy
+        </details>
+
+        <details>
+          <summary>About the founder</summary>
+          <p style="margin-top: 8px;">
+            My name is Ethan D'Amore. I am a high school student who plans to study animal care and marine conservation.
+            I have experience volunteering with animal shelters, completing veterinary assistant training, and helping
+            organize community projects related to animal welfare and disaster relief.
+          </p>
+          <p>
+            TurtleSync is my way of taking the next step, using what I have learned about structure, reporting, and
+            communication to support sea turtle protection in a real and focused way.
+          </p>
+        </details>
+
+        <details>
+          <summary>Future plans</summary>
+          <p style="margin-top: 8px;">
+            In the future I hope to:
+          </p>
+          <ul>
+            <li>Test the reporting form with volunteers and educators</li>
+            <li>Invite feedback from conservation groups and marine rescue teams</li>
+            <li>Explore basic data dashboards for viewing patterns in reports</li>
+            <li>Adapt the system for different regions as opportunities allow</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section>
+      <div class="container">
+        <h2>Contact</h2>
+        <p>
+          If you work with a conservation group, marine rescue team, school, or volunteer organization
+          and want to talk about TurtleSync, I would be glad to connect.
+        </p>
+        <ul>
+          <li>Email: <a href="mailto:ethan.damore2026@gmail.com">ethan.damore2026@gmail.com</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      TurtleSync is a student led project in development and does not replace official wildlife emergency hotlines
+      or local regulations.
+    </div>
+  </footer>
+
+</body>
+</html>
+
