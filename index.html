@@ -23,10 +23,9 @@
     }
 
     /* Nav */
-
     .nav {
       width: 100%;
-      background-color: rgba(12, 40, 64, 0.9);
+      background-color: rgba(12, 40, 64, 0.95);
       color: white;
       position: sticky;
       top: 0;
@@ -34,24 +33,26 @@
     }
 
     .nav-inner {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
     }
 
     .nav-logo {
       font-weight: 700;
-      letter-spacing: 0.05em;
-      font-size: 1rem;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
     }
 
     .nav-links {
       display: flex;
       gap: 14px;
       font-size: 0.9rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -65,13 +66,12 @@
     }
 
     /* Hero */
-
     header {
       background:
         linear-gradient(135deg, rgba(10, 135, 156, 0.9), rgba(18, 115, 196, 0.9)),
         url("https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg") center/cover no-repeat;
       color: white;
-      padding: 60px 20px 50px 20px;
+      padding: 56px 20px 46px 20px;
     }
 
     .container {
@@ -87,16 +87,6 @@
       align-items: flex-start;
     }
 
-    .hero-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-    }
-
-    .hero-subtitle {
-      font-size: 1.05rem;
-      max-width: 640px;
-    }
-
     .hero-tag {
       font-size: 0.9rem;
       text-transform: uppercase;
@@ -105,8 +95,20 @@
       opacity: 0.9;
     }
 
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin-top: 6px;
+    }
+
     .hero-buttons {
-      margin-top: 10px;
+      margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -118,7 +120,6 @@
       border: none;
       cursor: pointer;
       font-size: 0.95rem;
-      text-decoration: none;
       display: inline-block;
       transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
     }
@@ -142,9 +143,8 @@
     }
 
     /* Sections */
-
     main section {
-      padding: 36px 0;
+      padding: 34px 0;
     }
 
     section:nth-of-type(odd) {
@@ -156,7 +156,7 @@
     }
 
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       margin-bottom: 10px;
       color: #0c4f6b;
     }
@@ -166,7 +166,6 @@
     }
 
     /* Feature cards */
-
     .card-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -192,10 +191,9 @@
     }
 
     /* Two column */
-
     .two-column {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       gap: 24px;
       align-items: flex-start;
     }
@@ -215,11 +213,10 @@
     }
 
     /* Details sections */
-
     details {
       background-color: #ffffff;
       border-radius: 8px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       margin-bottom: 10px;
       box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
     }
@@ -245,7 +242,6 @@
     }
 
     /* Footer */
-
     footer {
       background-color: #0c2840;
       color: #d7e4f2;
@@ -263,7 +259,6 @@
     }
 
     /* Responsive */
-
     @media (max-width: 900px) {
       .card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -276,7 +271,7 @@
 
     @media (max-width: 650px) {
       header {
-        padding: 40px 18px 30px 18px;
+        padding: 40px 18px 28px 18px;
       }
 
       .hero-title {
@@ -290,12 +285,6 @@
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 4px;
-      }
-
-      .nav-links {
-        gap: 10px;
-        flex-wrap: wrap;
       }
     }
   </style>
@@ -350,7 +339,7 @@
       <div class="container">
         <h2>What TurtleSync does</h2>
         <p>
-          TurtleSync is a small but growing project that focuses on one clear goal:
+          TurtleSync focuses on one clear goal:
           turn concern on the beach into organized information that can help real turtles.
         </p>
 
@@ -359,7 +348,7 @@
             <div class="card-emoji">🐢</div>
             <div class="card-title">Report</div>
             <p>
-              Collects basic details about injured or nesting sea turtles through a simple online form.
+              Collects essential details about injured or nesting sea turtles through a simple online form.
             </p>
           </div>
 
@@ -367,7 +356,7 @@
             <div class="card-emoji">📊</div>
             <div class="card-title">Organize</div>
             <p>
-              Stores sightings in a structured format so patterns, locations, and urgent cases are easier to understand.
+              Stores sightings in a structured format so patterns and urgent cases are easier to understand.
             </p>
           </div>
 
@@ -375,7 +364,7 @@
             <div class="card-emoji">🌊</div>
             <div class="card-title">Support</div>
             <p>
-              Is designed to support the work of conservation teams, not replace official hotlines or local rules.
+              Supports the work of conservation teams, while respecting official hotlines and local rules.
             </p>
           </div>
         </div>
@@ -388,7 +377,7 @@
         <div>
           <h2>How reporting works</h2>
           <p>
-            TurtleSync is built to be simple. A report should feel quick and safe for the person and for the turtle.
+            TurtleSync is built to stay simple. A report should feel quick and safe for the person and for the turtle.
           </p>
           <ul>
             <li><span class="highlight">Observe from a distance.</span> Do not touch or crowd the animal.</li>
@@ -396,25 +385,21 @@
             <li><span class="highlight">Add photos if you can.</span> Images help responders understand the situation.</li>
             <li><span class="highlight">Follow local instructions.</span> Always follow posted signs and rules on the beach.</li>
           </ul>
-          <p>
-            Over time the form and process can be adapted with input from rescue groups and marine biologists.
-          </p>
         </div>
 
         <div>
           <div class="card">
             <h3 style="margin-bottom: 6px;">Inside a TurtleSync report</h3>
-            <p style="margin-bottom: 6px;">Current fields include:</p>
             <ul>
               <li>Date and time of sighting</li>
               <li>Beach name or access point</li>
-              <li>Type of sighting, such as injured turtle or hatchlings</li>
+              <li>Type of sighting</li>
               <li>Short description of behavior or injuries</li>
               <li>Immediate danger status</li>
               <li>Optional photo or video link</li>
             </ul>
             <p style="font-size: 0.9rem;">
-              These fields can be adjusted in the future if conservation partners request new data points.
+              These fields can change in the future if conservation partners request new data.
             </p>
           </div>
         </div>
@@ -426,16 +411,16 @@
       <div class="container">
         <h2>Where TurtleSync is used</h2>
         <p>
-          Right now TurtleSync is designed for beaches in the United States, especially areas where sea turtles are
-          commonly seen near the shoreline or nesting sites.
+          Right now TurtleSync is designed for beaches in the United States,
+          especially areas where sea turtles are commonly seen near the shoreline or nesting sites.
         </p>
         <p>
-          The long term goal is to build a simple model that could be adapted for other coastal regions around the
-          world with guidance from local experts and rescue organizations.
+          The long term goal is to create a simple model that can be adapted for other coastal regions
+          with guidance from local experts and rescue organizations.
         </p>
         <ul>
           <li>Current focus: United States coastal areas</li>
-          <li>Future goal: share the idea with global conservation partners</li>
+          <li>Future goal: adapt the idea with global conservation partners</li>
         </ul>
       </div>
     </section>
@@ -451,9 +436,9 @@
         <details>
           <summary>About TurtleSync</summary>
           <p style="margin-top: 8px;">
-            TurtleSync began as a student project that combined a love for marine life with an interest in simple,
-            practical technology. Instead of building a complicated app, the first version focuses on getting the basics
-            right: a clear form, an easy to understand website, and a process that can grow with real feedback.
+            TurtleSync started as a student project that combines a love for marine life with an interest in clear,
+            practical systems. The first version focuses on getting the basics right: a clear form, an easy to
+            understand website, and a process that can grow with real feedback.
           </p>
         </details>
 
@@ -461,12 +446,12 @@
           <summary>About the founder</summary>
           <p style="margin-top: 8px;">
             My name is Ethan D'Amore. I am a high school student who plans to study animal care and marine conservation.
-            I have experience volunteering with animal shelters, completing veterinary assistant training, and helping
-            organize community projects related to animal welfare and disaster relief.
+            I have experience volunteering with animal shelters, completing veterinary assistant training,
+            and helping organize community projects related to animal welfare and disaster relief.
           </p>
           <p>
-            TurtleSync is my way of taking the next step, using what I have learned about structure, reporting, and
-            communication to support sea turtle protection in a real and focused way.
+            TurtleSync is my way of taking the next step, using structure and reporting to support sea turtle protection
+            in a focused way.
           </p>
         </details>
 
@@ -478,7 +463,7 @@
           <ul>
             <li>Test the reporting form with volunteers and educators</li>
             <li>Invite feedback from conservation groups and marine rescue teams</li>
-            <li>Explore basic data dashboards for viewing patterns in reports</li>
+            <li>Explore basic data views for patterns in reports</li>
             <li>Adapt the system for different regions as opportunities allow</li>
           </ul>
         </details>
@@ -509,4 +494,3 @@
 
 </body>
 </html>
-
