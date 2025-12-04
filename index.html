@@ -2,553 +2,1141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>TurtleSync | Sea Turtle Reporting Project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TurtleSync is an independent sea turtle reporting project that connects public reports with organized information to support rescue and conservation work across the United States." />
-  <meta name="keywords" content="TurtleSync, sea turtle report, injured sea turtle, nesting sea turtle, sea turtle rescue, marine conservation, report a turtle, beach wildlife reporting, stranded turtle" />
+  <title>TurtleSync | Sea Turtle Reporting Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="TurtleSync is a centralized reporting platform that connects public sea turtle sightings, strandings, and nesting activity with local rescue and conservation teams across the United States." />
+  <meta name="keywords" content="sea turtle rescue, report injured sea turtle, sea turtle stranding, sea turtle nesting, marine animal rescue, sea turtle conservation, TurtleSync" />
+
   <style>
+    :root {
+      --deep-teal: #1a535c;
+      --aqua: #4ecdc4;
+      --soft-white: #f7fff7;
+      --warm-accent: #ff9f1c;
+      --text-dark: #12313a;
+      --text-muted: #5c6f73;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+      --transition-fast: 0.22s ease;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
-      background-color: #f4f7fa;
-      color: #123248;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--soft-white);
+      color: var(--text-dark);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
-    /* Nav */
-    .nav {
-      width: 100%;
-      background-color: rgba(12, 40, 64, 0.95);
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .nav-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 10px 16px;
+    /* Layout helpers */
+
+    .page {
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .nav-logo {
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      font-size: 0.95rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 14px;
-      font-size: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: #e6f4ff;
-      opacity: 0.9;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
-
-    /* Hero */
-    header {
-      background:
-        linear-gradient(135deg, rgba(10, 135, 156, 0.9), rgba(18, 115, 196, 0.9)),
-        url("https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg") center/cover no-repeat;
-      color: white;
-      padding: 56px 20px 46px 20px;
+      flex-direction: column;
     }
 
     .container {
-      max-width: 960px;
+      width: 100%;
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 16px;
+      padding: 0 1.25rem;
     }
 
-    .hero {
+    section {
+      padding: 4rem 0;
+    }
+
+    @media (min-width: 900px) {
+      section {
+        padding: 5.5rem 0;
+      }
+    }
+
+    .section-heading {
+      font-size: clamp(1.7rem, 2vw + 1.1rem, 2.2rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      color: var(--aqua);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-intro {
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 2.25rem;
+    }
+
+    /* Navbar */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(18, 49, 58, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .navbar-inner {
       display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
-    .hero-tag {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--soft-white);
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #4ecdc4, #1a535c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--soft-white);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand-text-main {
+      font-weight: 700;
+      letter-spacing: 0.06em;
       font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 600;
-      opacity: 0.9;
     }
 
-    .hero-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-top: 4px;
+    .brand-text-sub {
+      font-size: 0.7rem;
+      opacity: 0.8;
     }
 
-    .hero-subtitle {
-      font-size: 1.05rem;
-      max-width: 640px;
-      margin-top: 6px;
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: rgba(248, 255, 252, 0.95);
     }
 
-    .hero-buttons {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
     }
 
-    .btn {
-      padding: 10px 18px;
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
       border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      display: inline-block;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.1s ease;
+      background: var(--aqua);
+      transition: width var(--transition-fast);
     }
 
-    .btn-primary {
-      background-color: #ffffff;
-      color: #0a879c;
-      font-weight: 600;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
-    .btn-secondary {
-      background-color: rgba(255, 255, 255, 0.08);
-      color: #f2f9ff;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Sections */
-    main section {
-      padding: 34px 0;
-    }
-
-    section:nth-of-type(odd) {
-      background-color: #ffffff;
-    }
-
-    section:nth-of-type(even) {
-      background-color: #e7f2f7;
-    }
-
-    h2 {
-      font-size: 1.55rem;
-      margin-bottom: 10px;
-      color: #0c4f6b;
-    }
-
-    p {
-      margin-bottom: 10px;
-    }
-
-    /* Feature cards */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 16px;
-    }
-
-    .card {
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 16px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .card-emoji {
-      font-size: 1.6rem;
-      margin-bottom: 4px;
-    }
-
-    /* Two column */
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 24px;
-      align-items: flex-start;
-    }
-
-    ul {
-      margin-left: 18px;
-      margin-bottom: 10px;
-    }
-
-    li {
-      margin-bottom: 6px;
-    }
-
-    .highlight {
-      font-weight: 600;
-      color: #0a879c;
-    }
-
-    /* Details sections */
-    details {
-      background-color: #ffffff;
-      border-radius: 8px;
-      padding: 10px 14px;
-      margin-bottom: 10px;
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 600;
-      color: #0c4f6b;
-    }
-
-    summary::-webkit-details-marker {
+    .nav-cta {
       display: none;
     }
 
-    summary::before {
-      content: "▸ ";
+    .nav-cta .btn-primary {
+      padding: 0.45rem 0.95rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-toggle {
+      border: none;
+      background: transparent;
+      color: var(--soft-white);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    @media (min-width: 860px) {
+      .nav-links {
+        display: flex;
+      }
+      .nav-cta {
+        display: block;
+      }
+      .nav-toggle {
+        display: none;
+      }
+    }
+
+    /* Mobile nav dropdown */
+    .nav-mobile {
+      display: none;
+      background: #12313a;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-mobile.open {
+      display: block;
+    }
+
+    .nav-mobile-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
       font-size: 0.9rem;
-      color: #0a879c;
+      color: rgba(244, 255, 250, 0.92);
     }
 
-    details[open] summary::before {
-      content: "▾ ";
+    .nav-mobile a {
+      padding: 0.25rem 0;
     }
 
-    /* Footer */
-    footer {
-      background-color: #0c2840;
-      color: #d7e4f2;
-      padding: 18px 20px;
-      font-size: 0.9rem;
-    }
+    /* Buttons */
 
-    footer a {
-      color: #8fd7ff;
+    .btn {
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.7rem 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+      text-align: center;
       text-decoration: none;
+      white-space: nowrap;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--aqua), #8ff5e6);
+      color: #05313a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .card-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
+    }
 
-      .two-column {
-        grid-template-columns: 1fr;
+    .btn-secondary {
+      background: rgba(10, 61, 98, 0.08);
+      color: var(--soft-white);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(10, 61, 98, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--deep-teal);
+      border: 1px solid rgba(18, 49, 58, 0.14);
+    }
+
+    .btn-outline-dark:hover {
+      background: rgba(78, 205, 196, 0.08);
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at top left, #4ecdc4 0, #1a535c 38%, #0b2630 100%);
+      color: var(--soft-white);
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 3.4rem;
+    }
+
+    @media (min-width: 920px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+        padding-top: 4.2rem;
+        gap: 3.1rem;
       }
     }
 
-    @media (max-width: 650px) {
-      header {
-        padding: 40px 18px 28px 18px;
-      }
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(211, 255, 246, 0.88);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
 
-      .hero-title {
-        font-size: 2rem;
-      }
+    .hero-title {
+      font-size: clamp(2.1rem, 3.1vw + 1.5rem, 3.1rem);
+      line-height: 1.05;
+      margin-bottom: 0.7rem;
+    }
 
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
+    .hero-title span.highlight {
+      color: var(--aqua);
+    }
 
-      .nav-inner {
+    .hero-subtitle {
+      color: rgba(228, 249, 245, 0.92);
+      max-width: 540px;
+      margin-bottom: 1.5rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.78rem;
+      color: rgba(212, 241, 233, 0.9);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--aqua);
+      box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.35);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(5, 22, 29, 0.35);
+      font-size: 0.7rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ecdc4;
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: #0b2630;
+      min-height: 260px;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.96;
+      transform: scale(1.03);
+    }
+
+    .hero-tag-card {
+      position: absolute;
+      bottom: 1.1rem;
+      left: 1.2rem;
+      right: 1.2rem;
+      padding: 0.9rem 1rem;
+      background: rgba(5, 22, 29, 0.78);
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: rgba(230, 250, 246, 0.96);
+      border: 1px solid rgba(78, 205, 196, 0.4);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-tag-card strong {
+      font-size: 0.85rem;
+    }
+
+    .hero-tag-pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(78, 205, 196, 0.14);
+      border: 1px solid rgba(78, 205, 196, 0.6);
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 500px) {
+      .hero-tag-card {
         flex-direction: column;
         align-items: flex-start;
       }
     }
+
+    /* How it works */
+
+    .cards-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+    }
+
+    .card-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--aqua);
+      margin-bottom: 0.2rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Coverage section */
+
+    .coverage-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 880px) {
+      .coverage-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        align-items: center;
+      }
+    }
+
+    .coverage-map {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, #0b2630, #1a535c);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .coverage-map-inner {
+      border-radius: 18px;
+      border: 1px solid rgba(161, 219, 213, 0.45);
+      background: radial-gradient(circle at top, rgba(78, 205, 196, 0.12), transparent 60%);
+      padding: 1rem;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(227, 246, 242, 0.95);
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    .coverage-pill {
+      position: absolute;
+      top: 1.6rem;
+      right: 1.6rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #052126;
+      background: #f7fff7;
+    }
+
+    .coverage-list {
+      list-style: none;
+      margin: 0.4rem 0 1.3rem;
+      padding-left: 0;
+    }
+
+    .coverage-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .coverage-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-top: 0.35rem;
+      background: var(--aqua);
+    }
+
+    /* Data section */
+
+    .data-grid {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    @media (min-width: 900px) {
+      .data-grid {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      }
+    }
+
+    .stat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-chip {
+      border-radius: var(--radius-pill);
+      padding: 0.4rem 0.75rem;
+      background: rgba(26, 83, 92, 0.05);
+      border: 1px solid rgba(26, 83, 92, 0.12);
+      font-size: 0.78rem;
+      color: var(--text-dark);
+    }
+
+    .data-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.2rem;
+    }
+
+    .data-list li {
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+      color: var(--text-muted);
+    }
+
+    .data-panel {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .data-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .data-panel-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .data-pill {
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      background: rgba(78, 205, 196, 0.12);
+      color: var(--deep-teal);
+    }
+
+    .data-panel-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* About / founder */
+
+    .about-grid {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    @media (min-width: 880px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+        align-items: center;
+      }
+    }
+
+    .founder-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 1.35rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .founder-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .founder-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4ecdc4, #1a535c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f7fff7;
+      font-weight: 700;
+    }
+
+    .founder-name {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .founder-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .about-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.5rem 0 0;
+    }
+
+    .about-list li {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    /* Get involved */
+
+    .involved-card {
+      background: #102b33;
+      color: rgba(233, 252, 248, 0.96);
+      border-radius: var(--radius-xl);
+      padding: 1.7rem 1.6rem;
+      display: grid;
+      gap: 1.4rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 880px) {
+      .involved-card {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+        align-items: center;
+      }
+    }
+
+    .involved-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .involved-text {
+      font-size: 0.92rem;
+      color: rgba(215, 241, 235, 0.92);
+    }
+
+    .involved-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .involved-meta {
+      font-size: 0.8rem;
+      color: rgba(190, 222, 216, 0.9);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(18, 49, 58, 0.08);
+      padding: 1.4rem 0 1.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="nav-logo">TURTLESYNC</div>
-      <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#how">How it works</a>
-        <a href="#data">Sea turtle data</a>
-        <a href="#cases">Cases and examples</a>
-        <a href="#more">More info</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <header id="overview">
-    <div class="container hero">
-      <div>
-        <div class="hero-tag">Independent sea turtle reporting initiative</div>
-        <div class="hero-title">TurtleSync</div>
-        <div class="hero-subtitle">
-          A simple reporting tool that helps people on the beach share what they see, which helps organize information for sea turtle rescue and conservation work.
+<div class="page">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="#top" class="brand">
+        <div class="brand-logo">TS</div>
+        <div>
+          <div class="brand-text-main">TurtleSync</div>
+          <div class="brand-text-sub">Sea Turtle Reporting Network</div>
         </div>
-      </div>
+      </a>
 
-      <div class="hero-buttons">
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform?usp=sf_link"
-          class="btn btn-primary"
-          target="_blank"
-          rel="noopener"
-        >
+      <nav class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#data">Data and impact</a>
+        <a href="#about">About</a>
+        <a href="#involved">Get involved</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-primary"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
+           target="_blank" rel="noopener">
           Report a turtle
         </a>
+      </div>
 
-        <a href="#more" class="btn btn-secondary">
-          Learn more about TurtleSync
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="navMobile">
+      <div class="nav-mobile-inner">
+        <a href="#how-it-works">How it works</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#data">Data and impact</a>
+        <a href="#about">About</a>
+        <a href="#involved">Get involved</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
+           target="_blank" rel="noopener">
+          Report a turtle
         </a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Quick overview cards -->
-    <section>
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Public reports routed to local rescue teams
+          </div>
+          <div class="hero-kicker">Sea turtle conservation</div>
+          <h1 class="hero-title">
+            A single place to
+            <span class="highlight">report injured and nesting sea turtles.</span>
+          </h1>
+          <p class="hero-subtitle">
+            TurtleSync connects sightings from the public with the organizations that can help.
+            Reports are logged, organized, and routed so that stranded turtles and vulnerable nests
+            are not lost in the noise.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
+               target="_blank" rel="noopener">
+              Report a turtle
+            </a>
+            <a class="btn btn-secondary" href="#how-it-works">
+              How TurtleSync works
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="hero-meta-dot"></span>
+              <span>Phase 1 coverage: United States coastline</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-dot"></span>
+              <span>Built for rescue teams, volunteers, and beachgoers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=1100&q=80"
+               alt="Sea turtle swimming underwater" />
+          <div class="hero-tag-card">
+            <div>
+              <strong>Why a centralized hub matters</strong>
+              <div>Right now, people search dozens of different sites to find where to report a turtle.
+                TurtleSync creates one clear starting point.</div>
+            </div>
+            <div class="hero-tag-pill">
+              Vision: national rescue routing
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works">
       <div class="container">
-        <h2>What TurtleSync does</h2>
-        <p>
-          TurtleSync focuses on one clear goal:
-          turn concern on the beach into organized information that can support real sea turtle protection.
+        <div class="section-kicker">How it works</div>
+        <h2 class="section-heading">From beach sighting to rescue response</h2>
+        <p class="section-intro">
+          TurtleSync is designed to feel simple for the person on the beach while capturing the
+          detail that rescue teams and researchers need. The platform is being built in stages and
+          will continue to grow as partnerships are added.
         </p>
 
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-emoji">🐢</div>
-            <div class="card-title">Report</div>
-            <p>
-              Collects essential details about injured or nesting sea turtles through a simple online form that anyone can use.
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-label">Step 1</div>
+            <h3 class="card-title">Report the turtle</h3>
+            <p class="card-text">
+              A beachgoer, volunteer, or lifeguard fills out a brief report that captures location,
+              photos, species if known, and basic observations like injuries, entanglement, or
+              disorientation.
             </p>
-          </div>
+          </article>
 
-          <div class="card">
-            <div class="card-emoji">📊</div>
-            <div class="card-title">Organize</div>
-            <p>
-              Structures sightings in a consistent way so locations, patterns, and urgent situations are easier to review.
+          <article class="card">
+            <div class="card-label">Step 2</div>
+            <h3 class="card-title">Data is logged and organized</h3>
+            <p class="card-text">
+              Each submission is stored in a structured database, making it easier to track
+              hotspots, repeat issues, and seasonal trends in stranding and nesting activity
+              across the coastline.
             </p>
-          </div>
+          </article>
 
-          <div class="card">
-            <div class="card-emoji">🌊</div>
-            <div class="card-title">Support</div>
-            <p>
-              Is designed to support the work of aquariums, stranding networks, and rescue teams, not replace them.
+          <article class="card">
+            <div class="card-label">Step 3</div>
+            <h3 class="card-title">Routed to local responders</h3>
+            <p class="card-text">
+              The long term goal is for TurtleSync to act as a hub that forwards reports to the
+              correct authorized rescue group or turtle hospital based on region and type of case.
             </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- How it works -->
-    <section id="how">
-      <div class="container two-column">
+    <!-- COVERAGE -->
+    <section id="coverage">
+      <div class="container coverage-grid">
         <div>
-          <h2>How reporting works</h2>
-          <p>
-            TurtleSync is built to stay simple. A report should feel quick and safe for the person and for the turtle.
+          <div class="section-kicker">Coverage and vision</div>
+          <h2 class="section-heading">Built for the United States, designed to grow</h2>
+          <p class="section-intro">
+            TurtleSync is starting with a focus on United States coastlines, where sea turtle
+            strandings, nesting activity, and boat traffic are all increasing. The platform is
+            being structured in a way that can expand to new regions and partner networks.
           </p>
-          <ul>
-            <li><span class="highlight">Observe from a distance.</span> Do not touch or crowd the animal.</li>
-            <li><span class="highlight">Open the report form.</span> Share the time, location, and what you see.</li>
-            <li><span class="highlight">Add photos if you can.</span> Images help responders understand the situation.</li>
-            <li><span class="highlight">Follow local instructions.</span> Always follow posted signs and rules on the beach.</li>
+
+          <ul class="coverage-list">
+            <li>
+              <span class="coverage-bullet"></span>
+              <span>Organized around coastal regions so reports can be grouped by state,
+              nesting beach, and rescue coverage area.</span>
+            </li>
+            <li>
+              <span class="coverage-bullet"></span>
+              <span>Designed to work alongside existing hotlines and permitted organizations rather
+              than replace them.</span>
+            </li>
+            <li>
+              <span class="coverage-bullet"></span>
+              <span>Future phases include regional dashboards for authorized partners and exportable
+              data for long term research.</span>
+            </li>
           </ul>
-          <p>
-            As TurtleSync grows, the reporting process can be refined with input from people who work with sea turtles every day.
-          </p>
+
+          <div>
+            <a class="btn btn-outline-dark" href="#data">View data and impact goals</a>
+          </div>
         </div>
 
-        <div>
-          <div class="card">
-            <h3 style="margin-bottom: 6px;">Inside a TurtleSync report</h3>
-            <ul>
-              <li>Date and time of sighting</li>
-              <li>Beach name or access point</li>
-              <li>Type of sighting, such as injured turtle or hatchlings</li>
-              <li>Short description of behavior or injuries</li>
-              <li>Immediate danger status</li>
-              <li>Optional photo or video link</li>
-            </ul>
-            <p style="font-size: 0.9rem;">
-              These fields can change in the future if conservation partners request new information.
-            </p>
+        <div class="coverage-map" aria-hidden="true">
+          <div class="coverage-pill">Phase 1 • United States</div>
+          <div class="coverage-map-inner">
+            <div>
+              <strong>Nesting and stranding hotspots</strong>
+              <p>
+                This map template will be used to highlight key sea turtle nesting beaches,
+                stranding zones, and partner organizations as data and collaborations grow.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sea turtle data / context -->
+    <!-- DATA AND IMPACT -->
     <section id="data">
-      <div class="container">
-        <h2>Sea turtle activity and data</h2>
-        <p>
-          Sea turtles in the United States are monitored through nest counts, stranding reports, and long term research.
-          Many reports come from members of the public who notice something unusual and choose to speak up.
-        </p>
-        <p>
-          Common situations include:
-        </p>
-        <ul>
-          <li>Strandings after cold snaps, storms, or strong currents</li>
-          <li>Injuries from boat strikes or fishing gear</li>
-          <li>Disoriented hatchlings affected by artificial lights on the beach</li>
-          <li>Nesting turtles disturbed by people, vehicles, or pets</li>
-        </ul>
-        <p>
-          TurtleSync is meant to sit beside existing hotlines and reporting systems by giving the public one
-          clear place to share what they see in a structured way.
-        </p>
+      <div class="container data-grid">
+        <div>
+          <div class="section-kicker">Data and impact</div>
+          <h2 class="section-heading">Turning individual reports into conservation insight</h2>
+          <p class="section-intro">
+            Sea turtle rescues are often handled case by case. TurtleSync aims to protect
+            individual animals while also helping scientists and conservation teams see the bigger
+            picture of what is happening in the water and on the beach.
+          </p>
+
+          <div class="stat-chips">
+            <span class="stat-chip">Stranding patterns</span>
+            <span class="stat-chip">Nesting success</span>
+            <span class="stat-chip">Hotspot detection</span>
+            <span class="stat-chip">Public engagement</span>
+          </div>
+
+          <ul class="data-list">
+            <li>Track when and where strandings occur to identify repeat problem areas.</li>
+            <li>Compare nesting activity across seasons and beaches as reports grow.</li>
+            <li>Log common causes of injury such as entanglement, hooks, boat strikes, and cold stun.</li>
+            <li>Provide partners with exportable data they can use in their own research and reports.</li>
+          </ul>
+
+          <p class="section-intro" style="margin-bottom: 0;">
+            A future goal is to publish annual summary snapshots so that anyone, from a middle
+            school student to a marine biologist, can see how turtles are doing over time.
+          </p>
+        </div>
+
+        <aside class="data-panel">
+          <div class="data-panel-header">
+            <div class="data-panel-title">Example data snapshot</div>
+            <div class="data-pill">Prototype</div>
+          </div>
+          <div class="data-panel-body">
+            <p><strong>Report fields captured</strong></p>
+            <ul style="margin-left: 1rem; margin-top: 0.3rem;">
+              <li>Date, time, and precise location</li>
+              <li>Observed condition (injured, stranded, nesting, hatchlings)</li>
+              <li>Photos for responders and species confirmation</li>
+              <li>Nearby hazards such as boats, lights, or fishing gear</li>
+            </ul>
+            <p style="margin-top: 0.6rem;">
+              As the platform grows, these records will help answer questions about where
+              turtles are most at risk and which interventions make the greatest difference.
+            </p>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- Cases and examples -->
-    <section id="cases">
+    <!-- ABOUT FOUNDER -->
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-kicker">About TurtleSync</div>
+          <h2 class="section-heading">Created by a future marine care professional</h2>
+          <p class="section-intro">
+            TurtleSync was founded by Ethan D’Amore, a high school student who plans to work in
+            marine animal care and sea turtle rehabilitation. The project combines his background
+            in animal care, structured thinking, and a long term commitment to conservation.
+          </p>
+
+          <ul class="about-list">
+            <li>Experience working with animals through shelter volunteering and veterinary coursework.</li>
+            <li>Developed TurtleSync as a way to give the public one clear starting point to help sea turtles in trouble.</li>
+            <li>Plans to grow the platform throughout college with input from marine biologists, rescue teams, and data analysts.</li>
+            <li>Wants TurtleSync to serve not just as a reporting tool, but as a living record of how well we are protecting these species.</li>
+          </ul>
+        </div>
+
+        <aside class="founder-card">
+          <div class="founder-header">
+            <div class="founder-avatar">E</div>
+            <div>
+              <div class="founder-name">Ethan D’Amore</div>
+              <div class="founder-role">Founder, TurtleSync.org</div>
+            </div>
+          </div>
+          <p>
+            I have always felt a connection to animals that cannot speak for themselves. Living
+            with autism taught me how powerful structure and careful planning can be. I use those
+            same skills to build systems that keep animals safer.
+          </p>
+          <p style="margin-top: 0.5rem;">
+            TurtleSync is not a class assignment. It is the first step in the work I hope to do
+            for the rest of my life: helping stranded and injured marine animals get the care
+            they need, and giving rescue teams better information to make decisions.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- GET INVOLVED -->
+    <section id="involved">
       <div class="container">
-        <h2>Cases and examples</h2>
-        <p>
-          The examples below are based on real patterns that rescue organizations and marine biologists see.
-          They are included here to help people understand what different situations can look like and why careful reporting matters.
-        </p>
-
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-emoji">❄️</div>
-            <div class="card-title">Cold stunned juvenile</div>
-            <p>
-              A small turtle is found floating near shore after a sudden drop in water temperature.
-              A clear report with location, time, and photos helps responders decide whether a cold stun event is underway and if more animals might be affected.
+        <div class="involved-card">
+          <div>
+            <div class="section-kicker">Get involved</div>
+            <h2 class="involved-title">Rescue teams, aquariums, and turtle hospitals</h2>
+            <p class="involved-text">
+              TurtleSync is looking for input from organizations that respond to sea turtle
+              strandings, manage nesting beaches, or care for marine wildlife. Feedback on report
+              design, data fields, and regional routing will shape the next phase of the project.
+            </p>
+            <div class="involved-actions">
+              <a class="btn btn-primary" href="mailto:ethan.damore2026@gmail.com">
+                Share feedback or interest
+              </a>
+              <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
+                 target="_blank" rel="noopener">
+                Submit a test report
+              </a>
+            </div>
+            <p class="involved-meta">
+              This is an early stage platform. All partnerships will follow local regulations and
+              permitted rescue protocols.
             </p>
           </div>
-
-          <div class="card">
-            <div class="card-emoji">🏙️</div>
-            <div class="card-title">Disoriented hatchlings</div>
-            <p>
-              Hatchlings are seen crawling toward parking lot lights instead of the ocean.
-              A report helps document the location, lighting conditions, and number of hatchlings so local teams can respond and work to improve lighting near the beach.
+          <div>
+            <p class="involved-text">
+              Future plans include a secure partner portal where authorized users can view and
+              filter reports for their region, export data, and collaborate on outreach for
+              high risk areas.
             </p>
-          </div>
-
-          <div class="card">
-            <div class="card-emoji">🚤</div>
-            <div class="card-title">Adult with boat strike injuries</div>
-            <p>
-              An adult turtle is seen with shell damage near a busy channel.
-              Photos, a clear description of the injury, and an accurate location help stranding networks plan a safe response.
+            <p class="involved-text" style="margin-top: 0.6rem;">
+              If you work with sea turtles or marine wildlife and are interested in being a
+              pilot partner, your insight would directly guide how TurtleSync grows.
             </p>
           </div>
         </div>
-
-        <p style="font-size: 0.9rem; margin-top: 8px;">
-          As TurtleSync grows and partners share stories, this section can highlight real case outcomes and lessons learned.
-        </p>
-      </div>
-    </section>
-
-    <!-- Expandable more info -->
-    <section id="more">
-      <div class="container">
-        <h2>More about the project</h2>
-        <p>
-          TurtleSync started in high school and is designed to keep growing through college and beyond.
-          The sections below share more detail about the project and its direction.
-        </p>
-
-        <details>
-          <summary>About TurtleSync</summary>
-          <p style="margin-top: 8px;">
-            TurtleSync grew out of a simple question:
-            how can one person turn concern for sea turtles into something practical that helps others report what they see.
-            The project focuses on clear reporting, organized data, and communication that is easy for the public to use.
-          </p>
-        </details>
-
-        <details>
-          <summary>About the founder</summary>
-          <p style="margin-top: 8px;">
-            My name is Ethan D'Amore. I am a student who plans to study animal care and marine conservation.
-            I have experience volunteering with animal shelters, completing veterinary assistant training,
-            and helping organize community projects related to animal welfare and disaster relief.
-          </p>
-          <p>
-            TurtleSync is one of the ways I connect my long term goals with real work right now.
-            The project is built to grow as I learn more from courses, field work, and collaboration with professionals.
-          </p>
-        </details>
-
-        <details>
-          <summary>Long term direction</summary>
-          <p style="margin-top: 8px;">
-            Over time, I hope to develop TurtleSync in three main directions:
-          </p>
-          <ul>
-            <li>Refine the reporting form with input from conservation groups and educators</li>
-            <li>Explore ways to share reports with regional partners in a responsible and secure way</li>
-            <li>Build simple tools that help visualize where and when reports are happening</li>
-          </ul>
-          <p style="font-size: 0.9rem;">
-            The goal is for TurtleSync to stay practical and useful as my education and experience grow, not to remain a one time project.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section>
-      <div class="container">
-        <h2>Contact</h2>
-        <p>
-          If you work with a conservation group, marine rescue team, school, or volunteer organization
-          and want to talk about TurtleSync, I would be glad to connect.
-        </p>
-        <ul>
-          <li>Email: <a href="mailto:ethan.damore2026@gmail.com">ethan.damore2026@gmail.com</a></li>
-        </ul>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      TurtleSync is an independent project in development and does not replace official wildlife emergency hotlines
-      or local regulations.
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> TurtleSync.org. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="mailto:ethan.damore2026@gmail.com">Contact</a>
+      </div>
     </div>
   </footer>
+</div>
 
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById("navToggle");
+  const navMobile = document.getElementById("navMobile");
+
+  navToggle.addEventListener("click", () => {
+    navMobile.classList.toggle("open");
+  });
+
+  // Close mobile nav when clicking a link
+  navMobile.addEventListener("click", (e) => {
+    if (e.target.tagName.toLowerCase() === "a") {
+      navMobile.classList.remove("open");
+    }
+  });
+
+  // Set footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
-
