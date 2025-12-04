@@ -510,8 +510,10 @@
       padding: 1rem;
       aspect-ratio: 4 / 3;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0.6rem;
       color: rgba(227, 246, 242, 0.95);
       text-align: center;
       font-size: 0.88rem;
@@ -549,6 +551,19 @@
       border-radius: 50%;
       margin-top: 0.35rem;
       background: var(--aqua);
+    }
+
+    .hotspot-map {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .coverage-map-caption {
+      font-size: 0.8rem;
+      color: rgba(209, 233, 228, 0.96);
+      max-width: 18rem;
     }
 
     /* Data section */
@@ -859,7 +874,8 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=1100&q=80"
+          <!-- NEW TURTLE IMAGE -->
+          <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1100&q=80"
                alt="Sea turtle swimming underwater" />
           <div class="hero-tag-card">
             <div>
@@ -957,12 +973,66 @@
         <div class="coverage-map" aria-hidden="true">
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
-            <div>
-              <strong>Nesting and stranding hotspots</strong>
-              <p>
-                This map template will be used to highlight key sea turtle nesting beaches,
-                stranding zones, and partner organizations as data and collaborations grow.
-              </p>
+            <!-- NEW HOTSPOT MAP -->
+            <svg viewBox="0 0 400 230" class="hotspot-map"
+                 role="img"
+                 aria-label="Stylized map of United States highlighting sea turtle hotspot regions">
+              <defs>
+                <linearGradient id="oceanGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#071b29"/>
+                  <stop offset="1" stop-color="#02070d"/>
+                </linearGradient>
+                <linearGradient id="hotspotGradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#ffb36b"/>
+                  <stop offset="1" stop-color="#ff4f6a"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Ocean background -->
+              <rect x="0" y="0" width="400" height="230" fill="url(#oceanGradient)" />
+
+              <!-- Simplified US land mass -->
+              <path
+                d="M45 150 L80 120 L150 112 L215 94 L275 92 L330 110 L355 140 L338 165 L305 180 L255 198 L185 190 L125 180 L72 174 Z"
+                fill="#10263a"
+                stroke="#6faec0"
+                stroke-width="2" />
+
+              <!-- Gulf Coast hotspot -->
+              <path
+                d="M145 170 L205 176 L250 180 L278 176 L254 198 L185 190 Z"
+                fill="url(#hotspotGradient)"
+                opacity="0.9" />
+
+              <!-- Southeast Atlantic hotspot -->
+              <path
+                d="M260 110 L298 116 L326 126 L342 145 L326 168 L302 178 L278 176 L288 152 Z"
+                fill="url(#hotspotGradient)"
+                opacity="0.9" />
+
+              <!-- Hawaii hotspot -->
+              <circle cx="80" cy="205" r="8" fill="url(#hotspotGradient)" opacity="0.95" />
+              <circle cx="96" cy="197" r="4" fill="url(#hotspotGradient)" opacity="0.9" />
+
+              <!-- Title text -->
+              <text x="24" y="32" fill="#d2e7f4" font-size="12" letter-spacing="1.8">
+                NESTING AND STRANDING HOTSPOTS
+              </text>
+
+              <!-- Legend box -->
+              <rect x="22" y="42" width="160" height="52" rx="10" ry="10"
+                    fill="rgba(5,16,24,0.88)"
+                    stroke="rgba(202,238,231,0.7)"
+                    stroke-width="1" />
+              <circle cx="40" cy="67" r="6" fill="url(#hotspotGradient)" />
+              <text x="55" y="63" fill="#ecfbff" font-size="11">High activity coastline</text>
+              <text x="55" y="78" fill="#9fbed0" font-size="10">Priority focus zones for Phase 1</text>
+            </svg>
+
+            <div class="coverage-map-caption">
+              Highlighted regions represent current focus areas, including the Gulf Coast,
+              Southeast Atlantic, and Hawaii. As reports and partnerships grow, more coastlines
+              will be added.
             </div>
           </div>
         </div>
