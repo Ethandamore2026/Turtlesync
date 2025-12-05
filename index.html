@@ -50,8 +50,6 @@
       display: block;
     }
 
-    /* Layout helpers */
-
     .page {
       min-height: 100vh;
       display: flex;
@@ -207,7 +205,6 @@
       }
     }
 
-    /* Mobile nav dropdown */
     .nav-mobile {
       display: none;
       background: #12313a;
@@ -506,17 +503,14 @@
     .coverage-map-inner {
       border-radius: 18px;
       border: 1px solid rgba(161, 219, 213, 0.45);
-      background: radial-gradient(circle at top, rgba(78, 205, 196, 0.12), transparent 60%);
-      padding: 1rem;
+      background: radial-gradient(circle at top, rgba(78, 205, 196, 0.18), transparent 70%);
+      padding: 1rem 1.1rem 1.2rem;
       aspect-ratio: 4 / 3;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(227, 246, 242, 0.95);
-      text-align: center;
-      font-size: 0.88rem;
       flex-direction: column;
-      gap: 0.6rem;
+      justify-content: space-between;
+      color: rgba(227, 246, 242, 0.95);
+      font-size: 0.86rem;
     }
 
     .coverage-pill {
@@ -553,14 +547,56 @@
       background: var(--aqua);
     }
 
-    /* NEW: map image styling */
-    .hotspot-map {
-      width: 100%;
-      height: 100%;
-      max-height: 180px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25));
+    /* Map legend */
+
+    .coverage-map-legend {
+      align-self: flex-start;
+      background: rgba(5, 22, 29, 0.82);
+      border-radius: 14px;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid rgba(161, 219, 213, 0.5);
       margin-bottom: 0.4rem;
+    }
+
+    .coverage-map-legend .legend-title {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.3rem;
+    }
+
+    .coverage-map-legend .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+    }
+
+    .coverage-map-legend .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff6b6b;
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+    }
+
+    .coverage-map-legend .legend-note {
+      margin-top: 0.25rem;
+      font-size: 0.7rem;
+      opacity: 0.85;
+    }
+
+    .coverage-map-svg {
+      width: 100%;
+      flex: 1;
+      filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.4));
+    }
+
+    .coverage-caption {
+      margin-top: 0.55rem;
+      font-size: 0.82rem;
+      text-align: center;
+      color: rgba(215, 241, 235, 0.96);
     }
 
     /* Data section */
@@ -772,7 +808,6 @@
       text-underline-offset: 3px;
     }
 
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
@@ -871,14 +906,17 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <!-- REAL SEA TURTLE PHOTO -->
-          <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=1200&q=80"
-               alt="Sea turtle swimming underwater" />
+          <img
+            src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1100&q=80"
+            alt="Sea turtle swimming underwater"
+          />
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
-              <div>Right now, people search dozens of different sites to find where to report a turtle.
-                TurtleSync creates one clear starting point.</div>
+              <div>
+                Right now, people search dozens of different sites to find where to report a turtle.
+                TurtleSync creates one clear starting point.
+              </div>
             </div>
             <div class="hero-tag-pill">
               Vision: national rescue routing
@@ -970,19 +1008,60 @@
         <div class="coverage-map" aria-hidden="true">
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
-            <!-- REAL MAP IMAGE INSIDE THE BOX -->
-            <img
-              class="hotspot-map"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Blank_US_map_borders.svg/640px-Blank_US_map_borders.svg.png"
-              alt="Outline map of the United States used as a template for nesting and stranding hotspots"
-            />
-            <div>
-              <strong>Nesting and stranding hotspots</strong>
-              <p>
-                This map template will be used to highlight key sea turtle nesting beaches,
-                stranding zones, and partner organizations as data and collaborations grow.
-              </p>
+            <div class="coverage-map-legend">
+              <div class="legend-title">Hotspot regions</div>
+              <div class="legend-row">
+                <span class="legend-dot"></span>
+                <span>High activity coastline</span>
+              </div>
+              <div class="legend-note">Current focus for Phase 1</div>
             </div>
+
+            <svg class="coverage-map-svg" viewBox="0 0 320 180" role="img" aria-label="Stylized map of United States sea turtle hotspots">
+              <defs>
+                <linearGradient id="coastlineFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1a535c" />
+                  <stop offset="60%" stop-color="#14404a" />
+                  <stop offset="100%" stop-color="#0b2630" />
+                </linearGradient>
+                <linearGradient id="hotspotFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff9f1c" />
+                  <stop offset="100%" stop-color="#ff6b6b" />
+                </linearGradient>
+              </defs>
+
+              <!-- Stylized US coastline block -->
+              <path
+                d="M20 95 L55 55 L120 35 L195 45 L260 70 L300 115 L265 145 L200 160 L120 150 L55 135 Z"
+                fill="url(#coastlineFill)"
+                stroke="#8fe9e0"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+
+              <!-- East coast hotspot -->
+              <polygon
+                points="215,60 255,80 245,120 205,105"
+                fill="url(#hotspotFill)"
+                opacity="0.9"
+              />
+
+              <!-- Gulf coast hotspot -->
+              <polygon
+                points="120,120 165,135 150,155 105,142"
+                fill="url(#hotspotFill)"
+                opacity="0.9"
+              />
+
+              <!-- Small offshore hotspot markers -->
+              <circle cx="60" cy="120" r="5" fill="#ff6b6b" opacity="0.9" />
+              <circle cx="260" cy="135" r="4" fill="#ff6b6b" opacity="0.9" />
+            </svg>
+
+            <p class="coverage-caption">
+              This map template will be used to highlight key sea turtle nesting beaches,
+              stranding zones, and partner organizations as data and collaborations grow.
+            </p>
           </div>
         </div>
       </div>
@@ -1139,7 +1218,6 @@
 </div>
 
 <script>
-  // Mobile nav toggle
   const navToggle = document.getElementById("navToggle");
   const navMobile = document.getElementById("navMobile");
 
@@ -1147,16 +1225,13 @@
     navMobile.classList.toggle("open");
   });
 
-  // Close mobile nav when clicking a link
   navMobile.addEventListener("click", (e) => {
     if (e.target.tagName.toLowerCase() === "a") {
       navMobile.classList.remove("open");
     }
   });
 
-  // Set footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
-
