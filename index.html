@@ -503,6 +503,19 @@
       position: relative;
     }
 
+    .coverage-map-inner {
+      border-radius: 18px;
+      border: 1px solid rgba(161, 219, 213, 0.45);
+      background: radial-gradient(circle at top, rgba(78, 205, 196, 0.12), transparent 60%);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      color: rgba(227, 246, 242, 0.95);
+      font-size: 0.88rem;
+    }
+
     .coverage-pill {
       position: absolute;
       top: 1.6rem;
@@ -514,26 +527,16 @@
       background: #f7fff7;
     }
 
-    .coverage-map-inner {
-      border-radius: 18px;
-      border: 1px solid rgba(161, 219, 213, 0.45);
-      background: radial-gradient(circle at top, rgba(78, 205, 196, 0.12), transparent 60%);
-      padding: 1rem;
-      aspect-ratio: 4 / 3;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 0.75rem;
-      color: rgba(227, 246, 242, 0.95);
-      font-size: 0.88rem;
+    .hotspot-map {
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
     }
 
-    .coverage-map-image {
-      flex: 1;
-      border-radius: 14px;
+    .hotspot-map img {
       width: 100%;
-      object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      height: auto;
+      display: block;
     }
 
     .coverage-map-caption-title {
@@ -542,8 +545,7 @@
     }
 
     .coverage-map-caption-text {
-      font-size: 0.82rem;
-      color: rgba(210, 236, 231, 0.96);
+      font-size: 0.9rem;
     }
 
     .coverage-list {
@@ -877,18 +879,14 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <!-- NEW TURTLE HERO IMAGE -->
-          <img
-            src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1200&q=80"
-            alt="Sea turtle swimming underwater"
-          />
+          <!-- SEA TURTLE HERO IMAGE -->
+          <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=1200&q=80"
+               alt="Sea turtle swimming underwater" />
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
-              <div>
-                Right now, people search dozens of different sites to find where to report a turtle.
-                TurtleSync creates one clear starting point.
-              </div>
+              <div>Right now, people search dozens of different sites to find where to report a turtle.
+                TurtleSync creates one clear starting point.</div>
             </div>
             <div class="hero-tag-pill">
               Vision: national rescue routing
@@ -980,18 +978,17 @@
         <div class="coverage-map" aria-hidden="true">
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
-            <!-- NEW MAP STYLE IMAGE -->
-            <img
-              src="https://images.unsplash.com/photo-1521292270410-a8c53642e9d0?auto=format&fit=crop&w=900&q=80"
-              alt="Stylized map of the United States coastline with highlighted regions"
-              class="coverage-map-image"
-            />
-            <div>
+            <div class="hotspot-map">
+              <!-- HOTSPOT MAP IMAGE -->
+              <img src="https://images.unsplash.com/flagged/photo-1576485302438-3849e1fc5821?auto=format&fit=crop&w=900&q=80"
+                   alt="Stylized map of the United States coastline highlighting key regions" />
+            </div>
+            <div class="coverage-map-caption">
               <div class="coverage-map-caption-title">Nesting and stranding hotspots</div>
-              <p class="coverage-map-caption-text">
+              <div class="coverage-map-caption-text">
                 This map template will be used to highlight key sea turtle nesting beaches,
                 stranding zones, and partner organizations as data and collaborations grow.
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1169,3 +1166,4 @@
 </script>
 </body>
 </html>
+
