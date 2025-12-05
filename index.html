@@ -45,7 +45,7 @@
       text-decoration: none;
     }
 
-    img, svg {
+    img {
       max-width: 100%;
       display: block;
     }
@@ -393,9 +393,12 @@
       min-height: 260px;
     }
 
-    .hero-visual-inner {
+    .hero-visual img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      opacity: 0.96;
+      transform: scale(1.03);
     }
 
     .hero-tag-card {
@@ -505,6 +508,10 @@
       border: 1px solid rgba(161, 219, 213, 0.45);
       background: radial-gradient(circle at top, rgba(78, 205, 196, 0.12), transparent 60%);
       padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
       color: rgba(227, 246, 242, 0.95);
       font-size: 0.88rem;
     }
@@ -520,10 +527,16 @@
       background: #f7fff7;
     }
 
-    .hotspot-svg {
-      margin-bottom: 0.7rem;
+    .hotspot-map {
       border-radius: 14px;
       overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .hotspot-map img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .coverage-map-caption-title {
@@ -866,51 +879,7 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <svg class="hero-visual-inner" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="shellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#4ecdc4" />
-                <stop offset="100%" stop-color="#1a535c" />
-              </linearGradient>
-              <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0b3a4a" />
-                <stop offset="100%" stop-color="#02131b" />
-              </linearGradient>
-            </defs>
-
-            <!-- Water background -->
-            <rect x="0" y="0" width="320" height="220" fill="url(#waterGrad)" />
-            <circle cx="40" cy="30" r="3" fill="#8ff5e6" opacity="0.6" />
-            <circle cx="65" cy="50" r="2.5" fill="#8ff5e6" opacity="0.5" />
-            <circle cx="95" cy="32" r="2" fill="#8ff5e6" opacity="0.5" />
-
-            <!-- Shell -->
-            <ellipse cx="170" cy="115" rx="80" ry="52" fill="url(#shellGrad)" />
-            <ellipse cx="170" cy="115" rx="65" ry="40" fill="rgba(5,22,29,0.35)" stroke="#8ff5e6" stroke-width="2" />
-
-            <!-- Shell pattern -->
-            <line x1="130" y1="90" x2="210" y2="140" stroke="#8ff5e6" stroke-width="1.5" opacity="0.7" />
-            <line x1="130" y1="140" x2="210" y2="90" stroke="#8ff5e6" stroke-width="1.5" opacity="0.7" />
-            <line x1="170" y1="75" x2="170" y2="155" stroke="#8ff5e6" stroke-width="1.5" opacity="0.7" />
-            <line x1="120" y1="115" x2="220" y2="115" stroke="#8ff5e6" stroke-width="1.5" opacity="0.7" />
-
-            <!-- Head -->
-            <circle cx="245" cy="110" r="20" fill="#4ecdc4" />
-            <circle cx="252" cy="104" r="4" fill="#052126" />
-            <circle cx="250" cy="102" r="1.5" fill="#f7fff7" />
-
-            <!-- Flippers -->
-            <ellipse cx="120" cy="80" rx="26" ry="14" fill="#8ff5e6" transform="rotate(-25 120 80)" />
-            <ellipse cx="120" cy="150" rx="26" ry="14" fill="#8ff5e6" transform="rotate(25 120 150)" />
-            <ellipse cx="225" cy="78" rx="22" ry="12" fill="#38b8b0" transform="rotate(20 225 78)" />
-            <ellipse cx="215" cy="154" rx="24" ry="13" fill="#38b8b0" transform="rotate(-15 215 154)" />
-
-            <!-- Bubbles -->
-            <circle cx="80" cy="150" r="3" fill="#8ff5e6" opacity="0.6" />
-            <circle cx="65" cy="130" r="2.2" fill="#8ff5e6" opacity="0.5" />
-            <circle cx="50" cy="160" r="2.8" fill="#8ff5e6" opacity="0.5" />
-          </svg>
-
+          <img src="hero-turtle.jpg" alt="Sea turtle swimming underwater" />
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
@@ -1009,60 +978,10 @@
         <div class="coverage-map" aria-hidden="true">
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
-            <div class="hotspot-svg">
-              <svg viewBox="0 0 340 200" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#0b3a4a" />
-                    <stop offset="100%" stop-color="#0b2630" />
-                  </linearGradient>
-                  <radialGradient id="hotspotGrad" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff9f1c" stop-opacity="0.9" />
-                    <stop offset="100%" stop-color="#ff9f1c" stop-opacity="0" />
-                  </radialGradient>
-                </defs>
-
-                <!-- Map background -->
-                <rect x="0" y="0" width="340" height="200" fill="url(#mapBg)" />
-
-                <!-- Coastline shape (stylized U.S. coastline) -->
-                <path d="M30 120
-                         C 70 40, 150 40, 210 60
-                         C 250 75, 280 70, 310 80
-                         C 290 120, 250 150, 190 165
-                         C 130 180, 80 170, 40 150
-                         Z"
-                      fill="#103945"
-                      stroke="#8ff5e6"
-                      stroke-width="2"
-                      opacity="0.95" />
-
-                <!-- Hotspot glows -->
-                <circle cx="80" cy="80" r="26" fill="url(#hotspotGrad)" />
-                <circle cx="190" cy="110" r="24" fill="url(#hotspotGrad)" />
-                <circle cx="265" cy="95" r="24" fill="url(#hotspotGrad)" />
-
-                <!-- Hotspot dots -->
-                <circle cx="80" cy="80" r="5" fill="#ff9f1c" />
-                <circle cx="190" cy="110" r="5" fill="#ff9f1c" />
-                <circle cx="265" cy="95" r="5" fill="#ff9f1c" />
-
-                <!-- Legend box -->
-                <rect x="18" y="16" width="140" height="52" rx="10" ry="10"
-                      fill="rgba(5, 22, 29, 0.9)" stroke="#8ff5e6" stroke-width="1" />
-                <text x="30" y="32" fill="#f7fff7" font-size="11" font-family="system-ui">
-                  HOTSPOT REGIONS
-                </text>
-                <circle cx="32" cy="46" r="4" fill="#ff9f1c" />
-                <text x="42" y="49" fill="#e3f6f2" font-size="10" font-family="system-ui">
-                  High activity coastline
-                </text>
-                <text x="42" y="62" fill="#9ccac3" font-size="10" font-family="system-ui">
-                  Current focus for Phase 1
-                </text>
-              </svg>
+            <div class="hotspot-map">
+              <img src="map-hotspots.png"
+                   alt="Map of United States coastlines showing sea turtle hotspot regions" />
             </div>
-
             <div class="coverage-map-caption">
               <div class="coverage-map-caption-title">Nesting and stranding hotspots</div>
               <div class="coverage-map-caption-text">
@@ -1246,4 +1165,3 @@
 </script>
 </body>
 </html>
-
