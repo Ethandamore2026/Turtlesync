@@ -393,12 +393,15 @@
       min-height: 260px;
     }
 
-    .hero-visual img {
+    /* Apply same styling to the turtle SVG as the old image */
+    .hero-visual img,
+    .hero-visual svg {
       width: 100%;
       height: 100%;
       object-fit: cover;
       opacity: 0.96;
       transform: scale(1.03);
+      display: block;
     }
 
     .hero-tag-card {
@@ -513,10 +516,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      color: rgba(227, 246, 242, 0.95);
       text-align: center;
       font-size: 0.88rem;
+      gap: 0.7rem;
+      color: rgba(227, 246, 242, 0.95);
     }
 
     .coverage-pill {
@@ -553,17 +556,12 @@
       background: var(--aqua);
     }
 
+    /* simple hotspot map styling */
     .hotspot-map {
       width: 100%;
       height: auto;
       border-radius: 14px;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .coverage-map-caption {
-      font-size: 0.8rem;
-      color: rgba(209, 233, 228, 0.96);
-      max-width: 18rem;
     }
 
     /* Data section */
@@ -852,7 +850,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary"
-               href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
+               href="https://docs.google.com.forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
                target="_blank" rel="noopener">
               Report a turtle
             </a>
@@ -874,9 +872,55 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <!-- NEW TURTLE IMAGE -->
-          <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1100&q=80"
-               alt="Sea turtle swimming underwater" />
+          <!-- Turtle illustration instead of fish photo -->
+          <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sea turtle swimming underwater">
+            <defs>
+              <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#03233a"/>
+                <stop offset="1" stop-color="#01080f"/>
+              </linearGradient>
+              <linearGradient id="shell" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4ecdc4"/>
+                <stop offset="1" stop-color="#1a535c"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Background -->
+            <rect width="400" height="260" fill="url(#ocean)"/>
+
+            <!-- Light rays -->
+            <path d="M40 0 L80 0 L0 260 Z" fill="rgba(255,255,255,0.04)"/>
+            <path d="M140 0 L180 0 L60 260 Z" fill="rgba(255,255,255,0.035)"/>
+            <path d="M260 0 L300 0 L190 260 Z" fill="rgba(255,255,255,0.03)"/>
+
+            <!-- Turtle body -->
+            <ellipse cx="210" cy="135" rx="90" ry="60" fill="url(#shell)" stroke="#c7fff7" stroke-width="2"/>
+
+            <!-- Shell pattern -->
+            <path d="M150 135 Q210 95 270 135 Q210 175 150 135Z" fill="rgba(3,45,54,0.35)"/>
+            <path d="M210 75 V195" stroke="rgba(6,70,80,0.7)" stroke-width="3"/>
+            <path d="M160 105 L260 165" stroke="rgba(6,70,80,0.7)" stroke-width="3"/>
+            <path d="M260 105 L160 165" stroke="rgba(6,70,80,0.7)" stroke-width="3"/>
+
+            <!-- Head -->
+            <circle cx="310" cy="135" r="24" fill="#4ecdc4" stroke="#c7fff7" stroke-width="2"/>
+            <circle cx="318" cy="130" r="5" fill="#03233a"/>
+            <circle cx="317" cy="129" r="2" fill="#ffffff"/>
+
+            <!-- Front flippers -->
+            <path d="M165 110 Q125 75 95 80 Q120 110 140 135 Z" fill="#4ecdc4" stroke="#c7fff7" stroke-width="2"/>
+            <path d="M255 110 Q305 80 330 90 Q305 120 280 140 Z" fill="#4ecdc4" stroke="#c7fff7" stroke-width="2"/>
+
+            <!-- Back flippers -->
+            <path d="M165 160 Q135 190 115 210 Q145 200 170 190 Z" fill="#4ecdc4" stroke="#c7fff7" stroke-width="2"/>
+            <path d="M255 160 Q290 190 305 210 Q282 202 260 195 Z" fill="#4ecdc4" stroke="#c7fff7" stroke-width="2"/>
+
+            <!-- Bubbles -->
+            <circle cx="335" cy="105" r="4" fill="#c7f9ff" opacity="0.85"/>
+            <circle cx="345" cy="90" r="3" fill="#c7f9ff" opacity="0.7"/>
+            <circle cx="352" cy="75" r="2.5" fill="#c7f9ff" opacity="0.55"/>
+          </svg>
+
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
@@ -973,66 +1017,72 @@
         <div class="coverage-map" aria-hidden="true">
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
-            <!-- NEW HOTSPOT MAP -->
+            <!-- New simple US hotspot map -->
             <svg viewBox="0 0 400 230" class="hotspot-map"
                  role="img"
-                 aria-label="Stylized map of United States highlighting sea turtle hotspot regions">
+                 aria-label="United States coastline with sea turtle hotspot regions highlighted">
               <defs>
-                <linearGradient id="oceanGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#071b29"/>
+                <linearGradient id="mapOcean" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#031625"/>
                   <stop offset="1" stop-color="#02070d"/>
                 </linearGradient>
-                <linearGradient id="hotspotGradient" x1="0" y1="0" x2="1" y2="0">
+                <linearGradient id="mapLand" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#134a60"/>
+                  <stop offset="1" stop-color="#1a535c"/>
+                </linearGradient>
+                <linearGradient id="mapHotspot" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0" stop-color="#ffb36b"/>
                   <stop offset="1" stop-color="#ff4f6a"/>
                 </linearGradient>
               </defs>
 
-              <!-- Ocean background -->
-              <rect x="0" y="0" width="400" height="230" fill="url(#oceanGradient)" />
+              <!-- Ocean -->
+              <rect x="0" y="0" width="400" height="230" fill="url(#mapOcean)" />
 
               <!-- Simplified US land mass -->
               <path
-                d="M45 150 L80 120 L150 112 L215 94 L275 92 L330 110 L355 140 L338 165 L305 180 L255 198 L185 190 L125 180 L72 174 Z"
-                fill="#10263a"
-                stroke="#6faec0"
+                d="M40 145 L80 115 L145 108 L210 90 L270 92 L325 110 L350 138 L332 162 L300 178 L252 195 L185 188 L120 178 L68 170 Z"
+                fill="url(#mapLand)"
+                stroke="#9ad7e3"
                 stroke-width="2" />
 
               <!-- Gulf Coast hotspot -->
               <path
-                d="M145 170 L205 176 L250 180 L278 176 L254 198 L185 190 Z"
-                fill="url(#hotspotGradient)"
+                d="M145 165 L205 172 L250 176 L275 172 L252 193 L185 186 Z"
+                fill="url(#mapHotspot)"
                 opacity="0.9" />
 
               <!-- Southeast Atlantic hotspot -->
               <path
-                d="M260 110 L298 116 L326 126 L342 145 L326 168 L302 178 L278 176 L288 152 Z"
-                fill="url(#hotspotGradient)"
+                d="M260 110 L296 116 L322 126 L338 144 L322 166 L300 176 L278 174 L288 150 Z"
+                fill="url(#mapHotspot)"
                 opacity="0.9" />
 
               <!-- Hawaii hotspot -->
-              <circle cx="80" cy="205" r="8" fill="url(#hotspotGradient)" opacity="0.95" />
-              <circle cx="96" cy="197" r="4" fill="url(#hotspotGradient)" opacity="0.9" />
+              <circle cx="76" cy="205" r="7" fill="url(#mapHotspot)" opacity="0.95" />
+              <circle cx="92" cy="197" r="4" fill="url(#mapHotspot)" opacity="0.9" />
 
-              <!-- Title text -->
-              <text x="24" y="32" fill="#d2e7f4" font-size="12" letter-spacing="1.8">
-                NESTING AND STRANDING HOTSPOTS
-              </text>
-
-              <!-- Legend box -->
-              <rect x="22" y="42" width="160" height="52" rx="10" ry="10"
-                    fill="rgba(5,16,24,0.88)"
+              <!-- Legend -->
+              <rect x="20" y="20" width="168" height="60" rx="10" ry="10"
+                    fill="rgba(3,15,24,0.9)"
                     stroke="rgba(202,238,231,0.7)"
                     stroke-width="1" />
-              <circle cx="40" cy="67" r="6" fill="url(#hotspotGradient)" />
-              <text x="55" y="63" fill="#ecfbff" font-size="11">High activity coastline</text>
-              <text x="55" y="78" fill="#9fbed0" font-size="10">Priority focus zones for Phase 1</text>
+              <text x="30" y="38" fill="#e2f6ff" font-size="11" letter-spacing="1.5">
+                HOTSPOT REGIONS
+              </text>
+              <circle cx="36" cy="56" r="6" fill="url(#mapHotspot)" />
+              <text x="48" y="54" fill="#e9fbff" font-size="10">High activity coastline</text>
+              <text x="48" y="67" fill="#9dbccc" font-size="9">Current focus for Phase 1</text>
             </svg>
 
-            <div class="coverage-map-caption">
-              Highlighted regions represent current focus areas, including the Gulf Coast,
-              Southeast Atlantic, and Hawaii. As reports and partnerships grow, more coastlines
-              will be added.
+            <!-- Your original text kept exactly as it was -->
+            <div>
+              <strong>Nesting and stranding hotspots</strong>
+              <p>
+                This map template will be used to highlight key sea turtle nesting
+                beaches, stranding zones, and partner organizations as data and
+                collaborations grow.
+              </p>
             </div>
           </div>
         </div>
@@ -1210,5 +1260,4 @@
 </script>
 </body>
 </html>
-
 
