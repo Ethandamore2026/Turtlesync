@@ -438,6 +438,48 @@
       }
     }
 
+    /* How it works */
+
+    .cards-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.4rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+    }
+
+    .card-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--aqua);
+      margin-bottom: 0.2rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
     /* Coverage section */
 
     .coverage-grid {
@@ -837,7 +879,9 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <img src="hero-turtle.jpg" alt="Sea turtle swimming underwater" />
+          <img
+            src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=1100&q=80"
+            alt="Sea turtle swimming underwater" />
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
@@ -937,8 +981,9 @@
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
             <div class="hotspot-map">
-              <img src="https://images.unsplash.com/flagged/photo-1576485302438-3849e1fc5821?auto=format&fit=crop&w=900&q=80"
-                   alt="Stylized map of the United States coastline highlighting key regions" />
+              <img
+                src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=900&q=80"
+                alt="Map graphic showing coastal regions of the United States" />
             </div>
             <div class="coverage-map-caption">
               <div class="coverage-map-caption-title">Nesting and stranding hotspots</div>
@@ -1120,3 +1165,4 @@
 </script>
 </body>
 </html>
+
