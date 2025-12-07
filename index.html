@@ -480,6 +480,74 @@
       color: var(--text-muted);
     }
 
+    /* Beach guide section */
+
+    .guide-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .guide-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .guide-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .guide-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--aqua);
+    }
+
+    .guide-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .guide-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .guide-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+      margin-bottom: 0.1rem;
+      color: var(--text-dark);
+    }
+
+    .guide-list {
+      list-style: disc;
+      padding-left: 1.1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .guide-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .guide-disclaimer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1.3rem;
+      max-width: 720px;
+    }
+
     /* Coverage section */
 
     .coverage-grid {
@@ -801,6 +869,7 @@
 
       <nav class="nav-links">
         <a href="#how-it-works">How it works</a>
+        <a href="#beach-guide">On the beach</a>
         <a href="#coverage">Coverage</a>
         <a href="#data">Data and impact</a>
         <a href="#about">About</a>
@@ -823,6 +892,7 @@
     <div class="nav-mobile" id="navMobile">
       <div class="nav-mobile-inner">
         <a href="#how-it-works">How it works</a>
+        <a href="#beach-guide">On the beach</a>
         <a href="#coverage">Coverage</a>
         <a href="#data">Data and impact</a>
         <a href="#about">About</a>
@@ -878,7 +948,6 @@
           </div>
         </div>
 
-        <!-- HERO IMAGE WITH TURTLE -->
         <div class="hero-visual" aria-hidden="true">
           <img src="hero-turtle.jpg"
                alt="Sea turtle swimming underwater" />
@@ -942,6 +1011,118 @@
       </div>
     </section>
 
+    <!-- BEACH GUIDE / EDUCATION -->
+    <section id="beach-guide">
+      <div class="container">
+        <div class="section-kicker">On the beach</div>
+        <h2 class="section-heading">What to do when you find a turtle or a nest</h2>
+        <p class="section-intro">
+          TurtleSync is built for everyday beachgoers who want to do the right thing. This guide shares
+          practical steps you can take if you come across a nest, a stranded turtle, or disoriented hatchlings.
+          Local rules can vary, so always follow instructions from permitted responders.
+        </p>
+
+        <div class="guide-grid">
+          <!-- Card 1: Nests -->
+          <article class="guide-card">
+            <div class="guide-tag">Scenario 1</div>
+            <h3 class="guide-title">You find a sea turtle nest</h3>
+            <p class="guide-subtitle">
+              Nests are usually above the high tide line and may be marked by wooden stakes, tape, or signs.
+            </p>
+
+            <div class="guide-label">What you may see</div>
+            <ul class="guide-list">
+              <li>Disturbed sand or a mound with crawl tracks leading to or from the water</li>
+              <li>Wooden posts, rope, or flagging that marks a protected nesting area</li>
+              <li>Small depression in the sand later in the season as hatchlings start to emerge</li>
+            </ul>
+
+            <div class="guide-label">What to do</div>
+            <ul class="guide-list">
+              <li>Stay behind any marked barriers and keep a wide distance from the nest</li>
+              <li>Keep lights dim or off at night and shield phones or flashlights</li>
+              <li>Use TurtleSync to report unmarked nests or nests that appear washed out or disturbed</li>
+            </ul>
+
+            <div class="guide-label">What not to do</div>
+            <ul class="guide-list">
+              <li>Do not touch the nest, eggs, or sand around it</li>
+              <li>Do not place objects on top of the nest or dig near it</li>
+              <li>Do not share exact nest locations on social media</li>
+            </ul>
+          </article>
+
+          <!-- Card 2: Injured or cold-stunned turtles -->
+          <article class="guide-card">
+            <div class="guide-tag">Scenario 2</div>
+            <h3 class="guide-title">You see an injured or stranded turtle</h3>
+            <p class="guide-subtitle">
+              Turtles that are floating, not moving, or stuck on shore may be sick, injured, or cold stunned.
+            </p>
+
+            <div class="guide-label">What you may see</div>
+            <ul class="guide-list">
+              <li>Turtle on the beach that is not moving or is struggling to crawl</li>
+              <li>Visible injuries such as boat strike wounds, fishing line, or hooks</li>
+              <li>Turtle floating at the surface and not diving even when boats approach</li>
+            </ul>
+
+            <div class="guide-label">What to do</div>
+            <ul class="guide-list">
+              <li>Keep people and pets back and speak quietly around the animal</li>
+              <li>Take clear photos from a safe distance for responders</li>
+              <li>Use TurtleSync to submit a report with location, photos, and what you see</li>
+            </ul>
+
+            <div class="guide-label">What not to do</div>
+            <ul class="guide-list">
+              <li>Do not push the turtle back into the water</li>
+              <li>Do not try to remove hooks, line, or debris by yourself</li>
+              <li>Do not attempt to load the turtle into a car unless told to by permitted staff</li>
+            </ul>
+          </article>
+
+          <!-- Card 3: Hatchlings and lights -->
+          <article class="guide-card">
+            <div class="guide-tag">Scenario 3</div>
+            <h3 class="guide-title">You find hatchlings headed the wrong way</h3>
+            <p class="guide-subtitle">
+              Baby turtles use the brightest horizon to find the ocean. Street lights and house lights can pull
+              them inland instead.
+            </p>
+
+            <div class="guide-label">What you may see</div>
+            <ul class="guide-list">
+              <li>Groups of hatchlings crawling toward parking lots, streets, or buildings</li>
+              <li>Tracks leading away from the water instead of toward the waves</li>
+              <li>Single hatchlings found on walkways or near dunes with no water in sight</li>
+            </ul>
+
+            <div class="guide-label">What to do</div>
+            <ul class="guide-list">
+              <li>Turn off or shield nearby lights if you can do so safely</li>
+              <li>Block off foot traffic so people do not step on hatchlings</li>
+              <li>Use TurtleSync to report disoriented hatchlings so trained teams can respond</li>
+            </ul>
+
+            <div class="guide-label">What not to do</div>
+            <ul class="guide-list">
+              <li>Do not place hatchlings directly into the water unless instructed by trained staff</li>
+              <li>Do not keep hatchlings as pets or move them far from where you found them</li>
+              <li>Do not shine flashlights toward the nest or hold them close to the animals</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="guide-disclaimer">
+          TurtleSync is an educational tool and reporting hub. Sea turtles are protected by law, and all
+          hands-on rescue work must be carried out by permitted responders and authorized organizations in
+          your region.
+        </p>
+      </div>
+    </section>
+
     <!-- COVERAGE -->
     <section id="coverage">
       <div class="container coverage-grid">
@@ -977,7 +1158,6 @@
           </div>
         </div>
 
-        <!-- MAP IMAGE WITH HOTSPOTS -->
         <div class="coverage-map" aria-hidden="true">
           <div class="coverage-pill">Phase 1 • United States</div>
           <div class="coverage-map-inner">
