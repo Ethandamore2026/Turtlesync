@@ -7,7 +7,7 @@
 
   <!-- SEO -->
   <meta name="description" content="TurtleSync is a centralized reporting platform that connects public sea turtle sightings, strandings, and nesting activity with local rescue and conservation teams across the United States." />
-  <meta name="keywords" content="sea turtle rescue, report injured sea turtle, sea turtle stranding, sea turtle nesting, marine animal rescue, sea turtle conservation, TurtleSync, what to do if you find a sea turtle" />
+  <meta name="keywords" content="sea turtle rescue, report injured sea turtle, sea turtle stranding, sea turtle nesting, marine animal rescue, sea turtle conservation, TurtleSync" />
 
   <style>
     :root {
@@ -49,6 +49,8 @@
       max-width: 100%;
       display: block;
     }
+
+    /* Layout helpers */
 
     .page {
       min-height: 100vh;
@@ -205,6 +207,7 @@
       }
     }
 
+    /* Mobile nav dropdown */
     .nav-mobile {
       display: none;
       background: #12313a;
@@ -435,7 +438,7 @@
       }
     }
 
-    /* Generic cards */
+    /* How it works */
 
     .cards-grid {
       display: grid;
@@ -534,10 +537,6 @@
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    .coverage-map-caption {
-      font-size: 0.9rem;
     }
 
     .coverage-map-caption-title {
@@ -645,111 +644,6 @@
       color: var(--text-muted);
     }
 
-    /* Education section */
-
-    .learn-grid {
-      display: grid;
-      gap: 1.4rem;
-    }
-
-    @media (min-width: 850px) {
-      .learn-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .do-dont-list {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 0.5rem;
-      font-size: 0.88rem;
-    }
-
-    .do-dont-list li {
-      margin-bottom: 0.4rem;
-    }
-
-    .do-label {
-      font-weight: 600;
-      color: #1a7f4b;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .dont-label {
-      font-weight: 600;
-      color: #b03939;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    /* About / founder */
-
-    .about-grid {
-      display: grid;
-      gap: 1.6rem;
-    }
-
-    @media (min-width: 880px) {
-      .about-grid {
-        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
-        align-items: center;
-      }
-    }
-
-    .founder-card {
-      background: #ffffff;
-      border-radius: var(--radius-xl);
-      padding: 1.25rem 1.35rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(18, 49, 58, 0.06);
-      font-size: 0.92rem;
-      color: var(--text-muted);
-    }
-
-    .founder-header {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .founder-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #4ecdc4, #1a535c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f7fff7;
-      font-weight: 700;
-    }
-
-    .founder-name {
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .founder-role {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .about-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0.5rem 0 0;
-    }
-
-    .about-list li {
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-      color: var(--text-muted);
-    }
-
     /* Get involved */
 
     .involved-card {
@@ -821,6 +715,7 @@
       text-underline-offset: 3px;
     }
 
+    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
@@ -831,7 +726,7 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-inner">
-      <a href="#top" class="brand">
+      <a href="index.html#top" class="brand">
         <div class="brand-logo">TS</div>
         <div>
           <div class="brand-text-main">TurtleSync</div>
@@ -840,12 +735,12 @@
       </a>
 
       <nav class="nav-links">
-        <a href="#how-it-works">How it works</a>
-        <a href="#coverage">Coverage</a>
-        <a href="#learn">Beach guide</a>
-        <a href="#data">Data and impact</a>
-        <a href="#about">About</a>
-        <a href="#involved">Get involved</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#coverage">Coverage</a>
+        <a href="index.html#data">Data and impact</a>
+        <a href="about.html">About</a>
+        <a href="behind.html">Behind TurtleSync</a>
+        <a href="index.html#involved">Get involved</a>
       </nav>
 
       <div class="nav-cta">
@@ -863,12 +758,12 @@
 
     <div class="nav-mobile" id="navMobile">
       <div class="nav-mobile-inner">
-        <a href="#how-it-works">How it works</a>
-        <a href="#coverage">Coverage</a>
-        <a href="#learn">Beach guide</a>
-        <a href="#data">Data and impact</a>
-        <a href="#about">About</a>
-        <a href="#involved">Get involved</a>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#coverage">Coverage</a>
+        <a href="index.html#data">Data and impact</a>
+        <a href="about.html">About</a>
+        <a href="behind.html">Behind TurtleSync</a>
+        <a href="index.html#involved">Get involved</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
            target="_blank" rel="noopener">
           Report a turtle
@@ -877,9 +772,8 @@
     </div>
   </header>
 
-  <!-- MAIN -->
+  <!-- HERO -->
   <main id="top">
-    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
         <div>
@@ -922,7 +816,8 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <img src="hero-turtle.jpg" alt="Sea turtle swimming underwater" />
+          <img src="hero-turtle.jpg"
+               alt="Sea turtle swimming underwater" />
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
@@ -965,7 +860,7 @@
             <div class="card-label">Step 2</div>
             <h3 class="card-title">Data is logged and organized</h3>
             <p class="card-text">
-              Each submission is stored in a structured database, which makes it easier to track
+              Each submission is stored in a structured database, making it easier to track
               hotspots, repeat issues, and seasonal trends in stranding and nesting activity
               across the coastline.
             </p>
@@ -1037,73 +932,6 @@
       </div>
     </section>
 
-    <!-- EDUCATION: BEACH GUIDE -->
-    <section id="learn">
-      <div class="container">
-        <div class="section-kicker">Beach guide</div>
-        <h2 class="section-heading">Know what to do when you find a sea turtle</h2>
-        <p class="section-intro">
-          Many people want to help but are not sure what to do. These simple guides explain what
-          nests, stranded turtles, and lost hatchlings may look like and how to respond in a way
-          that keeps both you and the animals safe.
-        </p>
-
-        <div class="learn-grid">
-          <!-- Card 1: Nests -->
-          <article class="card">
-            <div class="card-label">Scenario 1</div>
-            <h3 class="card-title">You find a sea turtle nest</h3>
-            <p class="card-text">
-              Nests often look like a disturbed patch of sand with tracks leading to and from the
-              water. In many places they are marked with stakes, tape, or signs, but not always.
-            </p>
-            <ul class="do-dont-list">
-              <li><span class="do-label">Do</span> stay behind any posted barriers and give the nest space.</li>
-              <li><span class="do-label">Do</span> keep lights low at night and ask others nearby to dim flashlights and phone screens.</li>
-              <li><span class="do-label">Do</span> use TurtleSync or local contacts to report unmarked nests in busy areas.</li>
-              <li><span class="dont-label">Do not</span> touch, dig into, or sit on the nest area.</li>
-              <li><span class="dont-label">Do not</span> allow dogs or children to play on the nest or poke at the sand.</li>
-            </ul>
-          </article>
-
-          <!-- Card 2: Stranded or cold stunned -->
-          <article class="card">
-            <div class="card-label">Scenario 2</div>
-            <h3 class="card-title">You see a stranded or injured turtle</h3>
-            <p class="card-text">
-              A turtle that is floating, unresponsive, stuck on the beach, tangled in gear, or
-              moving very slowly in cold water may need help.
-            </p>
-            <ul class="do-dont-list">
-              <li><span class="do-label">Do</span> stay a safe distance away and keep people and pets back.</li>
-              <li><span class="do-label">Do</span> note the exact location and nearby landmarks, and take clear photos if safe to do so.</li>
-              <li><span class="do-label">Do</span> report the turtle through TurtleSync or the local stranding hotline listed for your area.</li>
-              <li><span class="dont-label">Do not</span> push the turtle back into the water. Injured or cold stunned turtles often need medical care.</li>
-              <li><span class="dont-label">Do not</span> try to remove hooks, lines, or gear on your own unless instructed by trained responders.</li>
-            </ul>
-          </article>
-
-          <!-- Card 3: Disoriented hatchlings -->
-          <article class="card">
-            <div class="card-label">Scenario 3</div>
-            <h3 class="card-title">You find hatchlings going the wrong way</h3>
-            <p class="card-text">
-              Hatchlings should move from the nest to the ocean, guided by the light on the
-              horizon. Streetlights, house lights, and car headlights can confuse them and send
-              them inland instead.
-            </p>
-            <ul class="do-dont-list">
-              <li><span class="do-label">Do</span> turn off or shield nearby lights if you can do that safely.</li>
-              <li><span class="do-label">Do</span> stand between the hatchlings and bright lights to help block the glare.</li>
-              <li><span class="do-label">Do</span> contact local turtle patrol, stranding networks, or use TurtleSync to report what you are seeing.</li>
-              <li><span class="dont-label">Do not</span> handle hatchlings unless local regulations and responders allow it.</li>
-              <li><span class="dont-label">Do not</span> place hatchlings directly in the surf without guidance from trained staff.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- DATA AND IMPACT -->
     <section id="data">
       <div class="container data-grid">
@@ -1154,48 +982,6 @@
               turtles are most at risk and which interventions make the greatest difference.
             </p>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ABOUT FOUNDER -->
-    <section id="about">
-      <div class="container about-grid">
-        <div>
-          <div class="section-kicker">About TurtleSync</div>
-          <h2 class="section-heading">Created by a future marine care professional</h2>
-          <p class="section-intro">
-            TurtleSync was founded by Ethan D’Amore, a high school student who plans to work in
-            marine animal care and sea turtle rehabilitation. The project combines his background
-            in animal care, structured thinking, and a long term commitment to conservation.
-          </p>
-
-          <ul class="about-list">
-            <li>Experience working with animals through shelter volunteering and veterinary coursework.</li>
-            <li>Developed TurtleSync as a way to give the public one clear starting point to help sea turtles in trouble.</li>
-            <li>Plans to grow the platform throughout college with input from marine biologists, rescue teams, and data analysts.</li>
-            <li>Wants TurtleSync to serve not just as a reporting tool, but as a living record of how well people are protecting these species.</li>
-          </ul>
-        </div>
-
-        <aside class="founder-card">
-          <div class="founder-header">
-            <div class="founder-avatar">E</div>
-            <div>
-              <div class="founder-name">Ethan D’Amore</div>
-              <div class="founder-role">Founder, TurtleSync.org</div>
-            </div>
-          </div>
-          <p>
-            I have always felt a connection to animals that cannot speak for themselves. Living
-            with autism taught me how powerful structure and careful planning can be. I use those
-            same skills to build systems that keep animals safer.
-          </p>
-          <p style="margin-top: 0.5rem;">
-            TurtleSync is not a class assignment. It is the first step in the work I hope to do
-            for the rest of my life: helping stranded and injured marine animals get the care
-            they need, and giving rescue teams better information to make decisions.
-          </p>
         </aside>
       </div>
     </section>
@@ -1255,6 +1041,7 @@
 </div>
 
 <script>
+  // Mobile nav toggle
   const navToggle = document.getElementById("navToggle");
   const navMobile = document.getElementById("navMobile");
 
@@ -1262,13 +1049,16 @@
     navMobile.classList.toggle("open");
   });
 
+  // Close mobile nav when clicking a link
   navMobile.addEventListener("click", (e) => {
     if (e.target.tagName.toLowerCase() === "a") {
       navMobile.classList.remove("open");
     }
   });
 
+  // Set footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
