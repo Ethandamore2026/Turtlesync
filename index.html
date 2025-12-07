@@ -571,6 +571,64 @@
       background: var(--aqua);
     }
 
+    /* Education section */
+
+    .education-grid {
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    @media (min-width: 880px) {
+      .education-grid {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        align-items: flex-start;
+      }
+    }
+
+    .education-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .education-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .education-list li {
+      margin-bottom: 0.7rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .education-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.15rem;
+    }
+
+    .education-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 1.2rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .education-card ul {
+      margin-left: 1.1rem;
+      margin-top: 0.3rem;
+    }
+
+    .education-card li {
+      margin-bottom: 0.35rem;
+    }
+
     /* Data section */
 
     .data-grid {
@@ -737,6 +795,7 @@
       <nav class="nav-links">
         <a href="index.html#how-it-works">How it works</a>
         <a href="index.html#coverage">Coverage</a>
+        <a href="index.html#education">Beach guide</a>
         <a href="index.html#data">Data and impact</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
@@ -760,6 +819,7 @@
       <div class="nav-mobile-inner">
         <a href="index.html#how-it-works">How it works</a>
         <a href="index.html#coverage">Coverage</a>
+        <a href="index.html#education">Beach guide</a>
         <a href="index.html#data">Data and impact</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
@@ -909,7 +969,7 @@
           </ul>
 
           <div>
-            <a class="btn btn-outline-dark" href="#data">View data and impact goals</a>
+            <a class="btn btn-outline-dark" href="#education">Beach guide</a>
           </div>
         </div>
 
@@ -929,6 +989,69 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION / BEACH GUIDE -->
+    <section id="education">
+      <div class="container education-grid">
+        <div>
+          <div class="section-kicker">On the beach</div>
+          <h2 class="section-heading">What to look for and what to do</h2>
+          <p class="section-intro">
+            TurtleSync is built for people who may be seeing a sea turtle, nest, or hatchlings for
+            the first time. This guide is not a full training, but it gives simple direction so you
+            can help without causing harm while you contact the right responders.
+          </p>
+
+          <ul class="education-list">
+            <li>
+              <span class="education-label">Marked nests</span>
+              Many nests are marked with posts and tape. Never walk inside the marked area, sit on
+              the sand above the nest, or let pets dig. Keep lights away from the beach at night.
+            </li>
+            <li>
+              <span class="education-label">Unmarked nests</span>
+              You might see a wide crawl pattern and a disturbed area of sand above the high tide
+              line. Do not dig or uncover it. Give it space and record the location in your report.
+            </li>
+            <li>
+              <span class="education-label">Stranded or injured turtles</span>
+              A turtle that is not moving, is stuck on shore, or is clearly entangled or hit by a
+              boat needs trained help. Do not push it back into the water or try to remove hooks on
+              your own. Stay nearby, keep people and pets away, and report with clear photos.
+            </li>
+            <li>
+              <span class="education-label">Cold stunned turtles</span>
+              In colder water, turtles can become slow and listless. They may float at the surface
+              or wash onto shore and seem half asleep. These animals can often be saved with rapid
+              rescue and care, so detailed reports matter.
+            </li>
+            <li>
+              <span class="education-label">Disoriented hatchlings</span>
+              Hatchlings should crawl toward the brightest natural horizon over the ocean. Street
+              lights, house lights, and flashlights can pull them inland instead. If you see many
+              hatchlings heading toward roads or buildings, dim lights if you can do that safely,
+              keep traffic away, and record what you see in detail when you report.
+            </li>
+          </ul>
+        </div>
+
+        <aside class="education-card">
+          <strong>Quick do and do not list</strong>
+          <ul>
+            <li><strong>Do</strong> stay back and give the animal space.</li>
+            <li><strong>Do</strong> take clear photos from a safe distance for your report.</li>
+            <li><strong>Do</strong> note nearby landmarks, access points, and any obvious hazards.</li>
+            <li><strong>Do not</strong> touch, ride, or feed a sea turtle, nest, or hatchlings.</li>
+            <li><strong>Do not</strong> pick up hatchlings or carry them to the water unless directed by permitted staff.</li>
+            <li><strong>Do not</strong> shine bright lights or camera flashes at turtles or nests at night.</li>
+          </ul>
+          <p style="margin-top: 0.6rem;">
+            Local laws and permits decide who can handle turtles and nests. TurtleSync is meant to
+            support those teams by giving them better information, not replace their role.
+          </p>
+        </aside>
       </div>
     </section>
 
