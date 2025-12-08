@@ -68,7 +68,7 @@
     }
 
     @media (min-width: 900px) {
-      section = section {
+      section {
         padding: 5.5rem 0;
       }
     }
@@ -477,6 +477,107 @@
       color: var(--text-muted);
     }
 
+    /* Demo report form */
+
+    .demo-report {
+      margin-top: 2.5rem;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 1.6rem 1.4rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+    }
+
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .demo-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .demo-pill {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(78, 205, 196, 0.08);
+      color: var(--deep-teal);
+      white-space: nowrap;
+    }
+
+    .demo-description {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .demo-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.9rem;
+    }
+
+    @media (min-width: 720px) {
+      .demo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .demo-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 0.85rem;
+    }
+
+    .demo-field label {
+      font-weight: 500;
+    }
+
+    .demo-field input,
+    .demo-field select,
+    .demo-field textarea {
+      border-radius: 10px;
+      border: 1px solid rgba(18, 49, 58, 0.18);
+      padding: 0.5rem 0.6rem;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+
+    .demo-field textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .demo-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 1rem;
+      justify-content: space-between;
+    }
+
+    .demo-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .demo-success {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #116a4f;
+      background: rgba(78, 205, 196, 0.12);
+      border-radius: 10px;
+      padding: 0.45rem 0.6rem;
+      display: none;
+    }
+
     /* Coverage */
 
     .coverage-grid {
@@ -564,6 +665,69 @@
       border-radius: 50%;
       margin-top: 0.35rem;
       background: var(--aqua);
+    }
+
+    /* Impact strip */
+
+    .impact-strip {
+      background: #0d313a;
+      color: #e9fbf7;
+      padding: 2.2rem 0;
+    }
+
+    .impact-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    @media (min-width: 780px) {
+      .impact-inner {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: center;
+      }
+    }
+
+    .impact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(202, 246, 237, 0.9);
+      margin-bottom: 0.35rem;
+    }
+
+    .impact-heading {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .impact-support {
+      font-size: 0.86rem;
+      color: rgba(210, 240, 233, 0.9);
+    }
+
+    .impact-metrics {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .impact-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .impact-metric-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .impact-metric-label {
+      font-size: 0.85rem;
+      color: rgba(210, 240, 233, 0.9);
     }
 
     /* Data */
@@ -796,7 +960,7 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-inner">
-      <a href="index.html#top" class="brand">
+      <a href="#top" class="brand">
         <div class="brand-logo">TS</div>
         <div>
           <div class="brand-text-main">TurtleSync</div>
@@ -811,9 +975,6 @@
         <a href="#education">Beach guides</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
-        <a href="data.html">Data snapshots</a>
-        <a href="roadmap.html">Roadmap</a>
-        <a href="press.html">Press and media</a>
         <a href="#involved">Get involved</a>
       </nav>
 
@@ -838,9 +999,6 @@
         <a href="#education">Beach guides</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
-        <a href="data.html">Data snapshots</a>
-        <a href="roadmap.html">Roadmap</a>
-        <a href="press.html">Press and media</a>
         <a href="#involved">Get involved</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
            target="_blank" rel="noopener">
@@ -954,6 +1112,74 @@
             </p>
           </article>
         </div>
+
+        <!-- DEMO REPORT FORM -->
+        <div class="demo-report" id="demo-report">
+          <div class="demo-header">
+            <div>
+              <div class="demo-title">Try a test report</div>
+              <p class="demo-description">
+                This demo shows the type of information TurtleSync is built to collect.
+                It does not contact real responders, but it mirrors the data structure
+                that rescue teams need.
+              </p>
+            </div>
+            <div class="demo-pill">Prototype • UI only</div>
+          </div>
+
+          <form id="demoReportForm">
+            <div class="demo-grid">
+              <div class="demo-field">
+                <label for="demoLocation">Location</label>
+                <input id="demoLocation" type="text" placeholder="Example: Clearwater Beach, FL" required />
+              </div>
+
+              <div class="demo-field">
+                <label for="demoCondition">Turtle condition</label>
+                <select id="demoCondition" required>
+                  <option value="">Select one</option>
+                  <option>Injured or entangled</option>
+                  <option>Stranded on the beach</option>
+                  <option>Nesting female</option>
+                  <option>Hatchlings on the sand</option>
+                  <option>Unsure</option>
+                </select>
+              </div>
+
+              <div class="demo-field">
+                <label for="demoSize">Approximate size</label>
+                <input id="demoSize" type="text" placeholder="Example: 2 ft shell length" />
+              </div>
+
+              <div class="demo-field">
+                <label for="demoPhotos">Photo upload (example only)</label>
+                <input id="demoPhotos" type="file" disabled />
+                <small style="font-size:0.75rem; color:var(--text-muted);">
+                  File upload will be active in a future phase.
+                </small>
+              </div>
+            </div>
+
+            <div class="demo-field" style="margin-top:0.8rem;">
+              <label for="demoNotes">Notes for responders</label>
+              <textarea id="demoNotes" placeholder="Example: Turtle is in the wrack line, waves are reaching it, people are gathering around."></textarea>
+            </div>
+
+            <div class="demo-footer">
+              <button type="submit" class="btn btn-primary">
+                Submit test report
+              </button>
+              <div class="demo-note">
+                This is a demonstration only. For real cases, use the official report link at the top of the page.
+              </div>
+            </div>
+
+            <div class="demo-success" id="demoSuccess">
+              Thank you. Your test report has been recorded for demonstration purposes.
+              In the full version, this data would be routed to the correct regional responder.
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -1006,6 +1232,40 @@
                 stranding zones, and partner organizations as data and collaborations grow.
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT STRIP -->
+    <section class="impact-strip" aria-label="Impact snapshot">
+      <div class="impact-inner">
+        <div>
+          <div class="impact-label">Project snapshot</div>
+          <div class="impact-heading">Designed to scale with real data</div>
+          <p class="impact-support">
+            Even in the prototype phase, TurtleSync is structured around the fields and workflows
+            that permitted sea turtle programs use in their reporting and response.
+          </p>
+        </div>
+        <div class="impact-metrics">
+          <div class="impact-metric">
+            <div class="impact-metric-value">15+</div>
+            <div class="impact-metric-label">Core data fields per report</div>
+          </div>
+          <div class="impact-metric">
+            <div class="impact-metric-value">3</div>
+            <div class="impact-metric-label">Priority scenarios: nests, hatchlings, strandings</div>
+          </div>
+        </div>
+        <div class="impact-metrics">
+          <div class="impact-metric">
+            <div class="impact-metric-value">Phase 1</div>
+            <div class="impact-metric-label">United States coastline focus</div>
+          </div>
+          <div class="impact-metric">
+            <div class="impact-metric-value">Future</div>
+            <div class="impact-metric-label">Regional dashboards and partner tools</div>
           </div>
         </div>
       </div>
@@ -1219,19 +1479,38 @@
   const navToggle = document.getElementById("navToggle");
   const navMobile = document.getElementById("navMobile");
 
-  navToggle.addEventListener("click", () => {
-    navMobile.classList.toggle("open");
-  });
+  if (navToggle && navMobile) {
+    navToggle.addEventListener("click", () => {
+      navMobile.classList.toggle("open");
+    });
 
-  // Close mobile nav when clicking a link
-  navMobile.addEventListener("click", (e) => {
-    if (e.target.tagName.toLowerCase() === "a") {
-      navMobile.classList.remove("open");
-    }
-  });
+    // Close mobile nav when clicking a link
+    navMobile.addEventListener("click", (e) => {
+      if (e.target.tagName.toLowerCase() === "a") {
+        navMobile.classList.remove("open");
+      }
+    });
+  }
 
   // Set footer year
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+  // Demo report form
+  const demoForm = document.getElementById("demoReportForm");
+  const demoSuccess = document.getElementById("demoSuccess");
+
+  if (demoForm && demoSuccess) {
+    demoForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      demoSuccess.style.display = "block";
+      setTimeout(() => {
+        demoForm.reset();
+      }, 800);
+    });
+  }
 </script>
 </body>
 </html>
