@@ -1197,15 +1197,21 @@
   </main>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> TurtleSync.org. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#top">Back to top</a>
-        <a href="mailto:ethan.damore2026@gmail.com">Contact</a>
-      </div>
+ <footer>
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> TurtleSync.org • Built and maintained by Ethan D’Amore</div>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+      <a href="mailto:ethan.damore2026@gmail.com">Contact</a>
     </div>
-  </footer>
+  </div>
+</footer>
+
+<script>
+  // Set footer year dynamically
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </div>
 
 <script>
