@@ -2,28 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Behind TurtleSync</title>
+  <title>Behind TurtleSync | TurtleSync.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Go behind the scenes of TurtleSync and learn how this student built sea turtle reporting platform is being designed, tested, and improved." />
-
   <style>
     :root {
       --deep-teal: #1a535c;
       --aqua: #4ecdc4;
       --soft-white: #f7fff7;
-      --warm-accent: #ff9f1c;
       --text-dark: #12313a;
       --text-muted: #5c6f73;
       --card-bg: #ffffff;
       --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.08);
       --radius-xl: 24px;
-      --radius-lg: 18px;
       --radius-pill: 999px;
       --max-width: 900px;
       --transition-fast: 0.22s ease;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--soft-white);
@@ -31,13 +28,24 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
 
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.25rem; }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-    /* Navbar */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Navbar (simple version that matches main site) */
+
     .navbar {
       position: sticky;
       top: 0;
@@ -46,46 +54,56 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
+
     .navbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.75rem 1.25rem;
-      max-width: 1120px;
+      max-width: var(--max-width);
       margin: 0 auto;
+      color: var(--soft-white);
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      color: var(--soft-white);
     }
+
     .brand-logo {
-      width: 34px; height: 34px; border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #4ecdc4, #1a535c);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 700; color: var(--soft-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--soft-white);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     }
+
     .brand-text-main {
       font-weight: 700;
       letter-spacing: 0.06em;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
     }
-    .brand-text-sub { font-size: 0.7rem; opacity: 0.8; }
 
     .nav-links {
-      display: none;
-      align-items: center;
-      gap: 1.4rem;
-      font-size: 0.9rem;
-      color: rgba(248, 255, 252, 0.95);
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
     }
+
     .nav-links a {
+      color: rgba(248, 255, 252, 0.95);
       position: relative;
       padding-bottom: 0.1rem;
     }
+
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -97,130 +115,86 @@
       background: var(--aqua);
       transition: width var(--transition-fast);
     }
-    .nav-links a:hover::after { width: 100%; }
 
-    .nav-cta { display: none; }
-    .nav-cta .btn-primary {
-      padding: 0.45rem 0.95rem;
-      font-size: 0.85rem;
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
-    .nav-toggle {
-      border: none;
-      background: transparent;
-      color: var(--soft-white);
-      font-size: 1.4rem;
-      cursor: pointer;
+    /* Content */
+
+    main {
+      padding: 3.5rem 0 4.5rem;
     }
 
-    @media (min-width: 860px) {
-      .nav-links { display: flex; }
-      .nav-cta { display: block; }
-      .nav-toggle { display: none; }
+    h1 {
+      font-size: clamp(1.9rem, 2.4vw + 1.2rem, 2.4rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
     }
 
-    .nav-mobile {
-      display: none;
-      background: #12313a;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .nav-mobile.open { display: block; }
-    .nav-mobile-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0.6rem 1.25rem 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      color: rgba(244, 255, 250, 0.92);
-    }
-
-    .btn {
-      border-radius: var(--radius-pill);
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 0.7rem 1.4rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
-      text-align: center;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--aqua), #8ff5e6);
-      color: #05313a;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.26);
-    }
-
-    main { padding: 3.5rem 0 4rem; }
-    .section-kicker {
+    .kicker {
       text-transform: uppercase;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.16em;
       color: var(--aqua);
       font-weight: 600;
-      margin-bottom: 0.45rem;
-    }
-    .section-heading {
-      font-size: clamp(1.9rem, 2.4vw + 1rem, 2.4rem);
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.03em;
-    }
-    .lead {
-      color: var(--text-muted);
-      margin-bottom: 1.8rem;
-      max-width: 640px;
+      margin-bottom: 0.4rem;
     }
 
-    .panel {
-      background: #ffffff;
+    .intro {
+      color: var(--text-muted);
+      margin-bottom: 1.7rem;
+      max-width: 680px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 820px) {
+      .grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
       border-radius: var(--radius-xl);
-      padding: 1.6rem 1.7rem;
+      padding: 1.4rem 1.5rem;
       box-shadow: var(--shadow-soft);
       border: 1px solid rgba(18, 49, 58, 0.06);
-      margin-bottom: 1.6rem;
       font-size: 0.95rem;
       color: var(--text-muted);
     }
-    .panel h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-dark);
-    }
-    .panel h3 {
-      font-size: 1.02rem;
-      margin-top: 0.8rem;
-      margin-bottom: 0.3rem;
-      color: var(--text-dark);
-    }
-    .panel p { margin-bottom: 0.6rem; }
-    .panel ul {
-      margin-left: 1.1rem;
-      margin-bottom: 0.4rem;
-    }
-    .panel li { margin-bottom: 0.35rem; }
 
-    .mini-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(78, 205, 196, 0.12);
-      color: var(--deep-teal);
-      font-size: 0.75rem;
-      margin-bottom: 0.5rem;
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-dark);
     }
+
+    .pill {
+      display: inline-flex;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-pill);
+      background: rgba(26, 83, 92, 0.05);
+      border: 1px solid rgba(26, 83, 92, 0.15);
+      font-size: 0.78rem;
+      margin-bottom: 0.55rem;
+      color: var(--text-dark);
+    }
+
+    ul {
+      margin-left: 1.1rem;
+      margin-top: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    ul li { margin-bottom: 0.3rem; }
+
+    strong { color: var(--text-dark); }
 
     footer {
       border-top: 1px solid rgba(18, 49, 58, 0.08);
@@ -229,6 +203,7 @@
       color: var(--text-muted);
       margin-top: auto;
     }
+
     .footer-inner {
       display: flex;
       flex-wrap: wrap;
@@ -236,238 +211,96 @@
       gap: 0.6rem;
       align-items: center;
     }
+
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 0.9rem;
     }
+
     .footer-links a {
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
     }
-
-    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
 <div class="page">
   <header class="navbar">
     <div class="navbar-inner">
-      <a href="index.html#top" class="brand">
+      <a href="index.html" class="brand">
         <div class="brand-logo">TS</div>
-        <div>
-          <div class="brand-text-main">TurtleSync</div>
-          <div class="brand-text-sub">Sea Turtle Reporting Network</div>
-        </div>
+        <div class="brand-text-main">TurtleSync</div>
       </a>
-
       <nav class="nav-links">
-        <a href="index.html#how-it-works">How it works</a>
-        <a href="index.html#coverage">Coverage</a>
-        <a href="index.html#data">Data and impact</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
-        <a href="index.html#involved">Get involved</a>
       </nav>
-
-      <div class="nav-cta">
-        <a class="btn btn-primary"
-           href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
-           target="_blank" rel="noopener">
-          Report a turtle
-        </a>
-      </div>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        ☰
-      </button>
-    </div>
-
-    <div class="nav-mobile" id="navMobile">
-      <div class="nav-mobile-inner">
-        <a href="index.html#how-it-works">How it works</a>
-        <a href="index.html#coverage">Coverage</a>
-        <a href="index.html#data">Data and impact</a>
-        <a href="about.html">About</a>
-        <a href="behind.html">Behind TurtleSync</a>
-        <a href="index.html#involved">Get involved</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
-           target="_blank" rel="noopener">
-          Report a turtle
-        </a>
-      </div>
     </div>
   </header>
 
   <main>
-    <section class="container">
-      <div class="section-kicker">Behind TurtleSync</div>
-      <h1 class="section-heading">How a student project became a real conservation tool</h1>
-      <p class="lead">
-        TurtleSync started as an idea on paper and grew into a working platform with a custom
-        domain, reporting workflow, and a plan for real partnerships. This page explains how it
-        was built, what research went into it, and where it is heading next.
+    <div class="container">
+      <div class="kicker">Behind the project</div>
+      <h1>The story and roadmap behind TurtleSync</h1>
+      <p class="intro">
+        TurtleSync started as a simple question I could not stop thinking about:
+        why is it so hard for a person on the beach to know who to call when they
+        see a turtle in trouble? This page explains the thinking behind the project
+        and where I plan to take it next.
       </p>
 
-      <article class="panel">
-        <div class="mini-tag">1. Origins</div>
-        <h2>Where the idea came from</h2>
-        <p>
-          My interest in sea turtles began long before I wrote a single line of code. I have spent
-          years following rescue stories, visiting aquariums and turtle hospitals, and learning how
-          strandings and nesting are monitored along the coast. At the same time, I was volunteering
-          with shelters, earning a veterinary assistant certification, and planning a future in
-          veterinary technology and marine animal care.
-        </p>
-        <p>
-          One pattern kept standing out. When a turtle is in trouble, the public often does not
-          know exactly who to call or where to report what they see. Different states and counties
-          have different hotlines and websites. Important details can be missed or never recorded
-          at all. TurtleSync grew from a simple question.
-        </p>
-        <p><em>What if there was one clear place to start that captured good data and supported the teams already doing the work?</em></p>
-      </article>
+      <div class="grid">
+        <section class="card">
+          <span class="pill">Why TurtleSync exists</span>
+          <h2>From school research to long term work</h2>
+          <p>
+            I have been interested in sea turtles since I was a kid. As I started
+            learning more about strandings, cold stun events, and nesting beaches, I
+            noticed how scattered the information was. Every region seemed to have a
+            different hotline, a different form, and a different way to report a
+            stranded turtle.
+          </p>
+          <p style="margin-top:0.6rem;">
+            At the same time, I was taking veterinary assistant and anatomy courses
+            and volunteering in animal care. I saw how important clear intake
+            information is for any rescue. TurtleSync combines that structured,
+            veterinary way of thinking with my long term goal of working in marine
+            animal care and turtle rehabilitation.
+          </p>
+        </section>
 
-      <article class="panel">
-        <div class="mini-tag">2. Research</div>
-        <h2>Learning how real strandings and nesting reports work</h2>
-        <p>
-          Before building anything, I spent time studying how sea turtle response actually operates.
-          I looked at:
-        </p>
-        <ul>
-          <li>How state agencies and permitted groups handle reports of stranded or injured turtles.</li>
-          <li>What information they request from callers, such as exact location, visible injuries, and behavior.</li>
-          <li>How nesting beaches are monitored and how volunteers are trained to avoid disturbing nests.</li>
-          <li>Common causes of strandings, including cold stun, boat strikes, entanglement, and light disorientation.</li>
-        </ul>
-        <p>
-          I also studied public facing educational materials about what to do and what not to do if
-          someone finds a turtle, a nest, or lost hatchlings. This helped shape the language on the
-          reporting form and the educational content on the main site.
-        </p>
-      </article>
-
-      <article class="panel">
-        <div class="mini-tag">3. Building the first version</div>
-        <h2>From notes to working site and report flow</h2>
-        <h3>Technical foundation</h3>
-        <p>
-          The first public version of TurtleSync is built as a static site hosted through GitHub Pages
-          with a custom domain at TurtleSync.org. I used:
-        </p>
-        <ul>
-          <li>HTML and CSS for a clean, mobile friendly layout with clear sections and calls to action.</li>
-          <li>A custom hero image and hotspot map graphic to visually connect the project to sea turtles and US coastlines.</li>
-          <li>Google Forms as the initial reporting backend to collect and structure incoming reports.</li>
-        </ul>
-        <p>
-          This approach makes the site fast, accessible, and easy to update as I learn more and as
-          partners share feedback.
-        </p>
-
-        <h3>Design decisions</h3>
-        <p>
-          Every part of the layout was chosen with a purpose.
-        </p>
-        <ul>
-          <li>The homepage focuses on what the user needs most: how to report, what the platform does, and where it operates.</li>
-          <li>Deeper content about my story and the technical details lives on separate pages so the main experience stays simple.</li>
-          <li>Buttons are clear and consistent so that even a stressed beachgoer can find the right action quickly.</li>
-        </ul>
-      </article>
-
-      <article class="panel">
-        <div class="mini-tag">4. Field guide content</div>
-        <h2>Helping people recognize what they see on the beach</h2>
-        <p>
-          A key part of TurtleSync is education. Many people are not sure what they are looking at
-          when they see a nest, a stranded turtle, or a confused hatchling near street lights.
-          The content I am building into the platform focuses on:
-        </p>
-        <ul>
-          <li>What a marked sea turtle nest typically looks like and why it is important not to disturb it.</li>
-          <li>Basic signs that a turtle may be stranded or injured, such as difficulty moving, obvious wounds, or entanglement.</li>
-          <li>Common cold stun scenarios in colder water, and why turtles may appear lethargic.</li>
-          <li>How artificial lights can disorient hatchlings and how the public can reduce that risk.</li>
-        </ul>
-        <p>
-          This educational layer supports better reports and also builds respect for local laws and
-          permitted responders. The goal is to help people assist without accidentally doing harm.
-        </p>
-      </article>
-
-      <article class="panel">
-        <div class="mini-tag">5. Roadmap</div>
-        <h2>Where TurtleSync is heading next</h2>
-        <p>
-          The current version of TurtleSync is a working prototype. As I move into veterinary
-          technology training and later into marine science, I plan to grow the project step by step.
-        </p>
-        <h3>Planned stages</h3>
-        <ul>
-          <li>Refine the reporting form based on feedback from rescue staff and volunteers.</li>
-          <li>Move from simple form storage to a structured database with better filtering and export tools.</li>
-          <li>Create regional views that help permitted organizations see only the cases that fit their coverage area.</li>
-          <li>Develop yearly summary reports that highlight trends in strandings, nesting, and public reports.</li>
-        </ul>
-        <p>
-          Each stage will be guided by input from professionals and by what is realistic for a
-          student developer to maintain responsibly.
-        </p>
-      </article>
-
-      <article class="panel">
-        <div class="mini-tag">6. Personal growth</div>
-        <h2>What this project has taught me so far</h2>
-        <p>
-          Living with autism, I rely on structure, systems, and clear steps to handle complex work.
-          Those same skills are what allowed me to design TurtleSync, stay organized, and keep
-          moving through each stage of development while balancing school, dual enrollment courses,
-          and animal care volunteering.
-        </p>
-        <p>
-          Building this project has helped me:
-        </p>
-        <ul>
-          <li>Translate a conservation problem into a practical tool that anyone can use.</li>
-          <li>Think in terms of workflows and data rather than only ideas.</li>
-          <li>Practice communicating with different audiences, from beachgoers to potential research partners.</li>
-          <li>See how my long term goal in animal care and marine conservation can connect directly to technology and data.</li>
-        </ul>
-        <p>
-          TurtleSync is not a finished product. It is the foundation of the work I want to keep doing
-          through college and beyond, supporting animals that cannot ask for help themselves and the
-          people who dedicate their lives to protecting them.
-        </p>
-      </article>
-
-      <article class="panel">
-        <div class="mini-tag">7. Getting in touch</div>
-        <h2>Interested in sharing feedback or ideas</h2>
-        <p>
-          If you work with sea turtles, marine mammals, coastal ecosystems, or wildlife data and
-          would like to share feedback, I would be grateful to learn from you.
-        </p>
-        <p>
-          You can reach me at
-          <a href="mailto:ethan.damore2026@gmail.com">ethan.damore2026@gmail.com</a>.
-        </p>
-        <p>
-          Even small suggestions about report fields, regional routing, or education topics can make
-          TurtleSync more useful for both the public and for conservation teams.
-        </p>
-      </article>
-    </section>
+        <aside class="card">
+          <span class="pill">Next milestones</span>
+          <h2>How I plan to grow TurtleSync</h2>
+          <p>
+            This is not a one weekend project. I am treating TurtleSync as a
+            long term platform that grows as I gain more training and connect with
+            professional rescue teams.
+          </p>
+          <ul>
+            <li>Collect feedback from at least three sea turtle or marine rescue programs on the reporting flow.</li>
+            <li>Build a prototype dashboard that lets one partner filter and export reports for their region.</li>
+            <li>Design regional routing rules so test reports go to the correct hotline or contact.</li>
+            <li>Publish simple annual summaries that show where and when most reports were submitted.</li>
+            <li>Continue updating the education guides as I learn from permitted responders and formal coursework.</li>
+          </ul>
+          <p style="margin-top:0.6rem;">
+            Each step is mapped to skills I am building in high school and college,
+            from data handling to communication with rescue partners.
+          </p>
+        </aside>
+      </div>
+    </div>
   </main>
 
   <footer>
     <div class="container footer-inner">
       <div>© <span id="year"></span> TurtleSync.org. All rights reserved.</div>
       <div class="footer-links">
-        <a href="index.html#top">Home</a>
-        <a href="about.html">About</a>
+        <a href="index.html">Back to home</a>
         <a href="mailto:ethan.damore2026@gmail.com">Contact</a>
       </div>
     </div>
@@ -475,20 +308,8 @@
 </div>
 
 <script>
-  const navToggle = document.getElementById("navToggle");
-  const navMobile = document.getElementById("navMobile");
-
-  navToggle.addEventListener("click", () => {
-    navMobile.classList.toggle("open");
-  });
-
-  navMobile.addEventListener("click", (e) => {
-    if (e.target.tagName.toLowerCase() === "a") {
-      navMobile.classList.remove("open");
-    }
-  });
-
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+
