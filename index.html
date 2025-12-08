@@ -50,8 +50,6 @@
       display: block;
     }
 
-    /* Layout helpers */
-
     .page {
       min-height: 100vh;
       display: flex;
@@ -207,7 +205,6 @@
       }
     }
 
-    /* Mobile nav dropdown */
     .nav-mobile {
       display: none;
       background: #12313a;
@@ -480,7 +477,7 @@
       color: var(--text-muted);
     }
 
-    /* Coverage section */
+    /* Coverage */
 
     .coverage-grid {
       display: grid;
@@ -510,8 +507,6 @@
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
       color: rgba(227, 246, 242, 0.95);
       font-size: 0.88rem;
     }
@@ -571,76 +566,7 @@
       background: var(--aqua);
     }
 
-    /* Education section */
-
-    .education-grid {
-      display: grid;
-      gap: 1.6rem;
-      margin-top: 0.5rem;
-    }
-
-    @media (min-width: 880px) {
-      .education-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .education-card {
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(18, 49, 58, 0.06);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .education-image {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .education-image img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .education-body {
-      padding: 1rem 1.25rem 1.2rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .education-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      color: var(--text-dark);
-    }
-
-    .education-tag {
-      display: inline-block;
-      margin-bottom: 0.4rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--aqua);
-      font-weight: 600;
-    }
-
-    .education-list {
-      margin-top: 0.55rem;
-      padding-left: 1.1rem;
-    }
-
-    .education-list li {
-      margin-bottom: 0.3rem;
-    }
-
-    /* Data section */
+    /* Data */
 
     .data-grid {
       display: grid;
@@ -711,6 +637,82 @@
     .data-panel-body {
       font-size: 0.85rem;
       color: var(--text-muted);
+    }
+
+    /* Education / beach guides */
+
+    .education-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: -1.4rem;
+      margin-bottom: 1.7rem;
+      max-width: 640px;
+    }
+
+    .education-grid {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    @media (min-width: 900px) {
+      .education-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .edu-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 1.3rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(18, 49, 58, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .edu-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--aqua);
+      font-weight: 600;
+    }
+
+    .edu-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0.1rem;
+    }
+
+    .edu-why {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .edu-photo-wrapper {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 0.1rem;
+    }
+
+    .edu-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .edu-list {
+      margin-top: 0.4rem;
+      margin-left: 1.1rem;
+      padding-left: 0;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    .edu-list li {
+      margin-bottom: 0.25rem;
     }
 
     /* Get involved */
@@ -784,7 +786,6 @@
       text-underline-offset: 3px;
     }
 
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
@@ -806,10 +807,11 @@
       <nav class="nav-links">
         <a href="#how-it-works">How it works</a>
         <a href="#coverage">Coverage</a>
-        <a href="#education">Education</a>
         <a href="#data">Data and impact</a>
+        <a href="#education">Beach guides</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
+        <a href="#involved">Get involved</a>
       </nav>
 
       <div class="nav-cta">
@@ -829,10 +831,11 @@
       <div class="nav-mobile-inner">
         <a href="#how-it-works">How it works</a>
         <a href="#coverage">Coverage</a>
-        <a href="#education">Education</a>
         <a href="#data">Data and impact</a>
+        <a href="#education">Beach guides</a>
         <a href="about.html">About</a>
         <a href="behind.html">Behind TurtleSync</a>
+        <a href="#involved">Get involved</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX0MkVYtU2Ra-bkpJp_ESkiaRCVHFb4wZT_xicHnVXeIsHyQ/viewform"
            target="_blank" rel="noopener">
           Report a turtle
@@ -841,8 +844,9 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- MAIN -->
   <main id="top">
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
         <div>
@@ -886,7 +890,7 @@
 
         <div class="hero-visual" aria-hidden="true">
           <img src="hero-turtle.jpg"
-               alt="Sea turtle swimming underwater" />
+               alt="Green sea turtle swimming near the surface of clear tropical water" />
           <div class="hero-tag-card">
             <div>
               <strong>Why a centralized hub matters</strong>
@@ -987,7 +991,7 @@
           <div class="coverage-map-inner">
             <div class="hotspot-map">
               <img src="map-hotspots.png"
-                   alt="Illustrated map showing sea turtle nesting and stranding hotspots along the United States coastline" />
+                   alt="Stylized map of United States coastlines with highlighted sea turtle nesting and stranding hotspots" />
             </div>
             <div class="coverage-map-caption">
               <div class="coverage-map-caption-title">Nesting and stranding hotspots</div>
@@ -997,87 +1001,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education">
-      <div class="container">
-        <div class="section-kicker">Education</div>
-        <h2 class="section-heading">What to do when you find turtles or nests</h2>
-        <p class="section-intro">
-          Many people want to help but are not sure what they are looking at or what the rules are.
-          These guides are written for beach visitors so they can recognize common situations and
-          support permitted responders instead of accidentally causing harm.
-        </p>
-
-        <div class="education-grid">
-          <!-- Nest card -->
-          <article class="education-card">
-            <div class="education-image">
-              <img src="nest-photo.jpg"
-                   alt="Sea turtle nest marked on a sandy beach with stakes and tape" />
-            </div>
-            <div class="education-body">
-              <span class="education-tag">Turtle nests</span>
-              <h3 class="education-title">If you come across a nest on the beach</h3>
-              <p>
-                A sea turtle nest usually looks like a disturbed patch of sand, often marked by
-                stakes, tape, or a sign from local teams.
-              </p>
-              <ul class="education-list">
-                <li>Stay outside any posted ropes or markers.</li>
-                <li>Do not touch eggs, sand, or tracks leading to the nest.</li>
-                <li>Keep dogs, chairs, and beach gear away from the area.</li>
-                <li>If the nest is not marked and seems at risk, report it through TurtleSync or a local hotline.</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Stranded / injured card -->
-          <article class="education-card">
-            <div class="education-image">
-              <img src="stranded-turtle.jpg"
-                   alt="Sea turtle stranded on the shoreline" />
-            </div>
-            <div class="education-body">
-              <span class="education-tag">Stranded or injured</span>
-              <h3 class="education-title">When a turtle is on the beach or in trouble</h3>
-              <p>
-                A turtle that is cold stunned, injured, or entangled may move slowly or not at all.
-                It might have visible wounds, fishing gear, or be in shallow water and not swimming normally.
-              </p>
-              <ul class="education-list">
-                <li>Do not push the turtle back into the water.</li>
-                <li>Keep crowds back and stay quiet around the animal.</li>
-                <li>Note the exact location and any hazards like boats or debris.</li>
-                <li>Report it immediately so permitted responders can take over.</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Hatchlings card -->
-          <article class="education-card">
-            <div class="education-image">
-              <img src="hatchlings-photo.jpg"
-                   alt="Sea turtle hatchlings on the sand making their way to the ocean" />
-            </div>
-            <div class="education-body">
-              <span class="education-tag">Lost hatchlings</span>
-              <h3 class="education-title">If you see hatchlings heading the wrong way</h3>
-              <p>
-                Baby sea turtles can become confused by bright lights and head inland toward houses
-                or roads instead of the ocean.
-              </p>
-              <ul class="education-list">
-                <li>Turn off or shield nearby lights if you can do it safely.</li>
-                <li>Do not carry hatchlings into the water unless told to by a permitted rescuer.</li>
-                <li>Watch where they are coming from and where they are headed.</li>
-                <li>Report disoriented hatchlings so the nest and lighting problems can be documented.</li>
-              </ul>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -1133,6 +1056,101 @@
             </p>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- EDUCATION / BEACH GUIDES -->
+    <section id="education">
+      <div class="container">
+        <div class="section-kicker">Beach guides</div>
+        <h2 class="section-heading">What to do when you see turtles or nests</h2>
+        <p class="section-intro">
+          People on vacation might only see a sea turtle once in their life. A few small choices
+          can either keep that turtle safe or put it in danger. These guides explain what to look
+          for and what to do in the most common situations.
+        </p>
+        <p class="education-note">
+          Guidance on this page is based on best practice tips from permitted sea turtle programs
+          and coastal wildlife agencies. Always follow local rules and instructions from
+          authorized responders in your area.
+        </p>
+
+        <div class="education-grid">
+          <!-- Card 1: Marked nest -->
+          <article class="edu-card">
+            <div class="edu-label">If you see a marked nest</div>
+            <h3 class="edu-title">Ropes, posts, and signs in the sand</h3>
+            <p class="edu-why">
+              The tape and wooden stakes protect eggs that are buried under the sand. Even one
+              person walking through can crush part of a nest.
+            </p>
+
+            <div class="edu-photo-wrapper">
+              <img src="nest-photo.jpg"
+                   alt="Roped off sea turtle nest marked with stakes and a sign on the beach" />
+            </div>
+            <p class="edu-caption">
+              Example of a marked nest. Turtles have already laid eggs here, even if you do not
+              see any shells or tracks.
+            </p>
+
+            <ul class="edu-list">
+              <li><strong>Do:</strong> Stay outside the ropes and keep dogs, chairs, and toys away from the nest area.</li>
+              <li><strong>Do:</strong> Call the number on the sign if the posts are knocked over or the tape is damaged.</li>
+              <li><strong>Do not:</strong> Dig near the nest, move the stakes, or sit on top of the marked area.</li>
+            </ul>
+          </article>
+
+          <!-- Card 2: Hatchlings -->
+          <article class="edu-card">
+            <div class="edu-label">If you see hatchlings</div>
+            <h3 class="edu-title">Baby sea turtles on the beach</h3>
+            <p class="edu-why">
+              Hatchlings need to crawl to the ocean on their own. This helps them build strength
+              and orient to the shoreline using natural light.
+            </p>
+
+            <div class="edu-photo-wrapper">
+              <img src="hatchlings-photo.jpg"
+                   alt="Several sea turtle hatchlings crawling across the sand toward the ocean" />
+            </div>
+            <p class="edu-caption">
+              Hatchlings are often confused by bright house lights or street lights and can head
+              inland instead of toward the water.
+            </p>
+
+            <ul class="edu-list">
+              <li><strong>Do:</strong> Give them space, keep people and pets behind them, and turn off nearby lights if you can.</li>
+              <li><strong>Do:</strong> Call the local turtle hotline if hatchlings are heading toward roads, parking lots, or buildings.</li>
+              <li><strong>Do not:</strong> Put them directly in the water unless a permitted responder tells you to do so.</li>
+            </ul>
+          </article>
+
+          <!-- Card 3: Stranded or cold stunned turtle -->
+          <article class="edu-card">
+            <div class="edu-label">If you find a stranded turtle</div>
+            <h3 class="edu-title">Injured, cold stunned, or stuck on shore</h3>
+            <p class="edu-why">
+              A turtle on the beach in the daytime, or floating and not diving, is often in
+              trouble. Pushing it back can make things worse.
+            </p>
+
+            <div class="edu-photo-wrapper">
+              <img src="stranded-turtle.jpg"
+                   alt="Stranded sea turtle lying on wet sand near the waterline" />
+            </div>
+            <p class="edu-caption">
+              Stranded turtles can be injured, sick, or cold stunned. They need trained help and
+              sometimes transport to a turtle hospital.
+            </p>
+
+            <ul class="edu-list">
+              <li><strong>Do:</strong> Call the local stranding hotline and give clear directions, photos, and the turtle’s size.</li>
+              <li><strong>Do:</strong> Keep people and pets back, and if it is safe, shade the turtle while you wait for help.</li>
+              <li><strong>Do not:</strong> Push the turtle back into the water, pull on flippers, or try to remove hooks or gear yourself.</li>
+            </ul>
+          </article>
+        </div>
       </div>
     </section>
 
